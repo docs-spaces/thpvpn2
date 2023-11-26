@@ -123,83 +123,16 @@
       <div class="buttons">
         <div class="download">
           <div class="logo windows"></div>
-          <button class="link-button dlink" data-os="win" id="download-alt-win" aria-label="Windows download" role="link">
-            <img class="download-icon" src="images/download.svg" width="18px" height="18px" alt="Download VS Code">
-            <img class="download-icon-accessible" src="images/download-black.svg" width="18px" height="18px" alt="Download VS Code"> Windows
-            <small>Windows 10, 11</small>
-          </button>
+          <a class="link-button" href="#alt-downloads" id="nav-download">
+            Windows x64<small>8.1 10 11</small></a>
     
           <table class="win-downloads">
             <tbody>
               <tr>
-                <td><strong>User Installer</strong></td>
-                <td><a class="dlink platform-link" data-os="win64user" id="download-alt-win64user" href="#" role="link" aria-label="Windows User install 64-bit x64">x64</a></td>
-                <td><a class="dlink platform-link" data-os="win32arm64user" id="download-alt-win32arm64user" href="#" role="link" aria-label="Windows User install Arm64">Arm64</a></td>
+                <td><strong>Installer</strong></td>
+                <td><a class="dlink platform-link" data-os="win64user" id="download-alt-win64user" href="#" role="link" aria-label="Windows User install 64-bit x64">x86</a></td>
               </tr>
-              <tr>
-                <td><strong>System Installer</strong></td>
-                <td><a class="dlink platform-link" data-os="win64" id="download-alt-win64" href="#" role="link" aria-label="Windows System install 64-bit x64">x64</a></td>
-                <td><a class="dlink platform-link" data-os="win32arm64setup" id="download-alt-win32arm64setup" href="#" role="link" aria-label="Windows System install Arm64">Arm64</a></td>
-              </tr>
-              <tr>
-                <td><strong>.zip</strong></td>
-                <td><a class="dlink platform-link" data-os="winzip" id="download-alt-winzip" href="#" role="link" aria-label="Windows ZIP 64-bit x64">x64</a></td>
-                <td><a class="dlink platform-link" data-os="win32arm64zip" id="download-alt-win32arm64zip" href="#" role="link" aria-label="Windows ZIP Arm64">Arm64</a></td>
-              </tr>
-              <tr class="cli-downloads">
-                <td><strong>CLI</strong></td>
-                <td><a class="dlink platform-link" data-os="wincli" id="download-alt-wincli" href="#" role="link" aria-label="Windows CLI 64-bit x64">x64</a></td>
-                <td><a class="dlink platform-link" data-os="win32arm64cli" id="download-alt-win32arm64cli" href="#" role="link" aria-label="Windows CLI Arm64">Arm64</a></td>
-              </tr>
-            </tbody>
-          </table>
-    
-        </div>
-    
-        <div class="download">
-          <div class="logo linux"></div>
-          <button class="link-button dlink" data-os="linux64_deb" id="download-alt-main-linux64_deb" aria-label="Linux Debian Ubuntu download" role="link">
-            <img class="download-icon" src="images/download.svg" width="18px" height="18px" alt="Download VS Code">
-            <img class="download-icon-accessible" src="images/download-black.svg" width="18px" height="18px" alt="Download VS Code"> .deb
-            <small>Debian, Ubuntu</small></button>
-          <button class="link-button dlink" data-os="linux64_rpm" id="download-alt-main-linux64_rpm" aria-label="Linux Red Hat Fedora SUSE download" role="link">
-            <img class="download-icon" src="images/download.svg" width="18px" height="18px" alt="Download VS Code">
-            <img class="download-icon-accessible" src="images/download-black.svg" width="18px" height="18px" alt="Download VS Code"> .rpm
-            <small>Red Hat, Fedora, SUSE</small>
-          </button>
-    
-          <table class="linux-downloads">
-            <tbody>
-              <tr>
-                <td><strong>.deb</strong></td>
-                <td><a class="dlink platform-link" data-os="linux64_deb" id="download-alt-linux64_deb" href="#" role="link" aria-label="Linux Debian Ubuntu 64-bit x64 download">x64</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarmhf_deb" id="download-alt-linuxarmhf_deb" href="#" role="link" aria-label="Linux Debian Ubuntu Arm 32-bit download">Arm32</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarm64_deb" id="download-alt-linuxarm64_deb" href="#" role="link" aria-label="Linux Debian Ubuntu Arm 64-bit download">Arm64</a></td>
-              </tr>
-              <tr>
-                <td><strong>.rpm</strong></td>
-                <td><a class="dlink platform-link" data-os="linux64_rpm" id="download-alt-linux64_rpm" href="#" role="link" aria-label="Linux Red Hat Fedora SUSE 64-bit x64 download">x64</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarmhf_rpm" id="download-alt-linuxarmhf_rpm" href="#" role="link" aria-label="Linux Red Hat Fedora SUSE Arm 32-bit download">Arm32</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarm64_rpm" id="download-alt-linuxarm64_rpm" href="#" role="link" aria-label="Linux Red Hat Fedora SUSE Arm 64-bit download">Arm64</a></td>
-              </tr>
-              <tr>
-                <td><strong>.tar.gz</strong></td>
-                <td><a class="dlink platform-link" data-os="linux64" id="download-alt-linux64" href="#" role="link" aria-label="Linux .tar.gz 64-bit x64 download">x64</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarmhf" id="download-alt-linuxarmhf" href="#" role="link" aria-label="Linux .tar.gz Arm 32-bit download">Arm32</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarm64" id="download-alt-linuxarm64" href="#" role="link" aria-label="Linux .tar.gz Arm 64-bit download">Arm64</a></td>
-              </tr>
-              <tr>
-                <td><strong>Snap</strong></td>
-                <td class="snap-button" colspan="3">
-                  <a class="dlink platform-link" href="https://snapcraft.io/code" target="_blank">Snap Store</a>
-                </td>
-              </tr>
-              <tr class="cli-downloads">
-                <td><strong>CLI</strong></td>
-                <td><a class="dlink platform-link" data-os="linux64cli" id="download-alt-linux64cli" href="#" role="link" aria-label="Linux .tar.gz 64-bit x64 CLI download">x64</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarmhfcli" id="download-alt-linuxarmhfcli" href="#" role="link" aria-label="Linux .tar.gz Arm 32-bit CLI download">Arm32</a></td>
-                <td><a class="dlink platform-link" data-os="linuxarm64cli" id="download-alt-linuxarm64cli" href="#" role="link" aria-label="Linux .tar.gz Arm 64-bit CLI download">Arm64</a></td>
-              </tr>
+              
             </tbody>
           </table>
     
