@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style-support.css">
+</head>
+<body>
+    <h1>วิธีแก้ไขปัญหาเบื้องต้น</h1>
+    <div class="container">
+        <div class="instructions">
+            <ol>
+                <li onclick="toggleDetails(this)">
+                    <b>เชื่อมต่อ VPN ได้แล้ว </b>แต่ไม่สามารถเข้าใช้ระบบงานได้ <b>คลิก</b> เพื่อดูวิธีตรวจสอบเบื้องต้น
+                    <div class="details">
+                        - ตรวจสอบ <b>ZERO TRUST TELEMETRY</b> ว่าสถานะ <b>Connected</b> หรือไม่ และ <b>ชื่อถูกต้องหรือไม่</b>
+                        <img class="adapt-img" src="images/2.PNG" alt="Step 1" width="700" height="440" onclick="zoomImage(this)">
+                        <b>**หากตรวจสอบแล้วไม่ถูกต้องกรุณาดำเนินการตามนี้**</b>
+                        <img class="adapt-img" src="images/windowsinvite.jpg" alt="Step 1" width="700" height="440" onclick="zoomImage(this)">
+                        - หลังจากดำเนินการแล้ว <b>ZERO TRUST TELEMETRY</b> ต้องขึ้นสถานะ <b>Connected</b> และ <b>แสดงชื่อถูกต้องตามรูปแบบ ตามภาพแรก</b>
+                        <br></br>
+                        <h5>หากดำเนินการแล้วยังไม่สามารถใช้งานได้ติดต่อที่ LINE:THP VPN IDLine:@961ugpvt</h5>
+                    </div>
+                </li>
+
+                <li onclick="toggleDetails(this)">
+                    กรณีที่ต้องการ <b>ติดตั้ง Token ใหม่</b>
+                    <div class="details">
+                        - กรณีที่เปิด Forti Token แล้ว <b>ไม่พบ Token</b> ตามภาพด้านล่าง หรือ เปลี่ยนเครื่องใหม่ หรือ ติดตั้งแอป Forti Token ใหม่
+                        <img class="adapt-img" src="images/emthytoken.jpg" alt="Step 1" width="200" height="120" onclick="zoomImage(this)">
+                        <h5>**(แจ้งที่ IDLine:@961ugpvt เพื่อขอ QR CODE สำหรับลงทะเบียน Forti Token ใหม่ได้เลย)**</h5>
+                        - หลังจากได้รับ QR CODE ทางเมลให้ทำการ <b>กดปุ่ม SCAN BARCODE</b> แล้วสแกน QR CODE ที่ได้รับ เป็นอันเสร็จสิ้น
+                        
+                    </div>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img class="modal-content" id="img01" ondblclick="toggleZoom()">
+        <div class="zoom-instruction">Double click to zoom</div>
+    </div>
+
+    <script src="js/support.js"></script>
+</body>
+</html>
