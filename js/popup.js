@@ -7,7 +7,7 @@ document.addEventListener("DOMContentLoaded", function() {
     popupContent.className = "popup-content";
 
     var popupTitle = document.createElement("h1");
-    popupTitle.innerHTML = "<strong>Warning!</strong>" ;
+    popupTitle.innerHTML = "<strong>สำหรับผู้ใช้ MacOS/IpadOS/iOS/Android</strong>" ;
 
     var popupMessage = document.createElement("p");
     popupMessage.textContent = "";
