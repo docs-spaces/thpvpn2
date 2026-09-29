@@ -1,171 +1,99 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <title>docs THP VPN</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/popup.css">
-    <link rel="icon" type="images/x-icon" href="images/apple-touch-icon.png">
-    <style>img { max-width: 150%; width: 1000; }</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>เริ่มใช้งาน VPN | THP VPN</title>
+  <meta name="description" content="รวมขั้นตอนขอสิทธิ์ ดาวน์โหลดและติดตั้ง FortiClient คู่มือเชื่อมต่อ VPN และวิธีแก้ปัญหาสำหรับผู้ใช้งาน THP VPN">
+  <link rel="icon" href="images/apple-touch-icon.png" type="image/png">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/index.js" defer></script>
 </head>
-<body class="home">
-    <div id="main">
-        <div class="navbar-fixed-container">
-            <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="1">
-                <nav role="navigation" aria-label="Top Level">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="navbar-fixed-container" href="#"><img src="images/apple-touch-icon.png" alt="..." height="48"></a>
-                        </div>
-                        <div class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav navbar-left">
-                                <li><a id="nav-docs" href="#manaul">คู่มือรวม</a></li>
-                                <li><a id="nav-updates" href="#alt-downloads">ดาวน์โหลด</a></li>
-                                <li><a id="nav-support" href="support.html">แก้ไขปัญหาเบื้องต้น</a></li>
-                                <li><a id="nav-blogs" href="#contact">ติดต่อ</a></li>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right" role="presentation">
-                                <li><a href="https://lin.ee/IXZnVrP" target="_blank"><img src="https://scdn.line-apps.com/n/line_add_friends/btn/th.png" alt="เพิ่มเพื่อน" width="100" height="30" border="0"> กดเพิ่มเพื่อนเพื่อสอบถามข้อมูล/ปัญหา</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-        <div class="updates-banner home">
-            <div class="container">
-                <p class="message"> โปรแกรม Cisco Anyconnect ปิดให้บริการแล้ว หากต้องการใช้งานต่อหรือยังไม่เคยใช้งาน VPN<a href="docs/คู่มือการใช้งานระบบ IT Service .pdf" target="_blank">คลิกที่นี่</a></p>
-            </div>
-            <div tabindex="0" role="button" title="Dismiss this update" class="dismiss-btn" id="banner-dismiss-btn"><span class="sr-only">Dismiss this update</span><span aria-hidden="true" class="glyph-icon"></span></div>
-        </div>
-        <div role="main" id="main-content">
-            <div class="jumbotron home">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-3 copy">
-                            <h1><strong>Forti Client</strong>VPN</h1>
-                            <div class="lead">
-                                <p>Work anywhere.</p>
-                            </div>
-                            <div id="download-buttons" class="download-hero alt-downloads">
-                                <div class="primary-buttons">
-                                    <a class="link-button" href="https://drive.usercontent.google.com/download?id=10xzWSTRw_L1sOFKRRFJ45gT8dhKUtwS7&export=download&authuser=0&confirm=t&uuid=f37636d8-aef5-4898-8609-68e16dbd24ed&at=APvzH3ovHZrMS2o-dLLyRzks_vhS:1735361327883" target="_blank" id="nav-download">
-                                        Windows x64<small>8.1 10 11</small></a>
-                                </div>
-                                <!-- <button id="download-dropdown" title="Other platforms and Insiders Edition" class="link-button download-dropdown" type="button" aria-haspopup="true" aria-labelledby="download-matrix-label"></button> -->
-                                <div id="download-matrix" aria-expanded="false" aria-labelledby="download-matrix-label" role="menu">
-                                    <table>
-                                        <colgroup>
-                                            <col span="3">
-                                            <col span="2" class="insiders-column">
-                                        </colgroup>
-                                        <thead>
-                                            <tr>
-                                                <th scope="col"></th>
-                                                <th scope="col"></th>
-                                                <th class="build-header" scope="col">User</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="os-group">
-                                            <tr>
-                                                <td class="os" scope="row">macOS</td>
-                                                <td class="download-type">Installer</td>
-                                                <td><a role="link" href="https://drive.usercontent.google.com/download?id=1hzLEQqemECEZDaaiMKlIm7aLsK_LPn91&export=download&authuser=0&confirm=t&uuid=3cb217bb-5456-4800-ab26-fb33afce1bb5&at=APvzH3oA9R-GZE7TxnxTn12-_xbl:1735361650576" target="_blank">
-                                                    <img class="download-stable-icon" src="images/download_blue.svg" alt="Download Stable">
-                                                    <img class="download-stable-icon-accessible" src="images/download_yellow.svg" alt="Download Stable">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                        <tbody class="os-group">
-                                            <tr>
-                                                <td class="os" scope="row">Windows x86 (32bit)</td>
-                                                <td class="download-type">Installer</td>
-                                                <td><a role="link" href="https://drive.usercontent.google.com/download?id=1rkXbrCzuE2-_PimQUgE0N5A5tfv1phIG&export=download&authuser=0&confirm=t&uuid=e8256394-30f9-4eed-a16b-86b80ad0806e&at=AN_67v3kLBGxo5Fthjt8xW9zo_12:1730268603476" target="_blank">
-                                                    <img class="download-stable-icon" src="images/download_blue.svg" alt="Download Stable">
-                                                    <img class="download-stable-icon-accessible" src="images/download_yellow.svg" alt="Download Stable">
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-7 col-xs-3">
-                            <img class="download-icon" src="images/unnamed.png">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="manaul" class="value-props">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4 col-xs-6"><a class="value-prop" id="" href="https://drive.google.com/drive/folders/1BemTgVOzoAbQRNlOjLrfPfoh1gvj32aT?usp=drive_link" target="_blank"><button><div class=""> <img src="images/install.png" width="100" height="100"></div>คู่มือการติดตั้งโปรแกรม</a></div></button>
-                        <div class="col-md-4 col-xs-6"><a class="value-prop" id="" href="docs/คู่เข้าใช้งาน VPN Forticlient สำหรับ windows.pdf " target="_blank"><button><div class=""> <img src="images/book.png" width="100" height="100" alt=""></div>คู่มือการใช้งานโปรแกรม</a></div></button>
-                        <div class="col-md-4 col-xs-6"><a class="value-prop" id="" href="docs/คู่มือการใช้งานระบบ IT Service .pdf" target="_blank"><button><div class=""> <img src="images/request.png" width="100" height="100" alt=""></div>คู่มือการร้องขอใช้งาน</a></div></button>
-                    </div>
-                    <br></br>
-                </div>
-            </div>
-            <div class="swimlane-container">
-                <div id="alt-downloads" class="swimlane alt-downloads download-buttons">
-                    <div class="buttons">
-                        <div class="download">
-                            <div class="logo windows"></div>
-                            <a class="link-button" href="https://drive.usercontent.google.com/download?id=10xzWSTRw_L1sOFKRRFJ45gT8dhKUtwS7&export=download&authuser=0&confirm=t&uuid=f37636d8-aef5-4898-8609-68e16dbd24ed&at=APvzH3ovHZrMS2o-dLLyRzks_vhS:1735361327883" target="_blank" id="nav-download">
-                                Windows x64<small>8.1 10 11</small></a>
-                            <table class="win-downloads">
-                                <tbody>
-                                    <tr>
-                                        <td><strong>windows 32 bit (x86)</strong></td>
-                                        <td><a class="dlink platform-link" href="https://drive.usercontent.google.com/download?id=1rkXbrCzuE2-_PimQUgE0N5A5tfv1phIG&export=download&authuser=0&confirm=t&uuid=e8256394-30f9-4eed-a16b-86b80ad0806e&at=AN_67v3kLBGxo5Fthjt8xW9zo_12:1730268603476" target="_blank" role="link" aria-label="Windows User install 64-bit x64">Download</a></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="download">
-                            <div class="logo mac"></div>
-                            <a class="link-button" href="https://drive.usercontent.google.com/download?id=1hzLEQqemECEZDaaiMKlIm7aLsK_LPn91&export=download&authuser=0&confirm=t&uuid=3cb217bb-5456-4800-ab26-fb33afce1bb5&at=APvzH3oA9R-GZE7TxnxTn12-_xbl:1735361650576" target="_blank" id="nav-download">
-                                macOS<strong>สำหรับ CPU Intel เท่านั้น</strong></a>
-                            <table class="win-downloads"></table>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>สำหรับ CPU M1/M2/M3/M4 ต้องโหลดผ่าน APP Store<br></strong></td>
-                                    </tr>
-                                </tbody>
-                        </div>
-                        <div class="download">
-                            <div class="logo windows"></div>
-                            <a class="link-button" href="https://drive.usercontent.google.com/download?id=1qiMwtyfKRekaLz3_zNRMA2XuQvIC5Jw2&export=download&authuser=0&confirm=t&uuid=266173f5-0684-4e8e-ab91-df67b8beb16a&at=AN8xHopY0YGdDPv5csgj_keAN-2N:1756089952661" target="_blank" id="nav-download">
-                                Windows ARM<small>สำหรับ Windows ARM เท่านั้น</small></a>
-                                <table class="win-downloads"></table>
-                                <tbody>
-                                    <tr>
-                                        <td><strong>อุปกรณ์ที่พบบ่อยซึ่งใช้ CPU ARM <br>เช่น อุปกรณ์พกพาที่ใช้ Windows OS<br></strong></td>
-                                    </tr>
-                                </tbody>
-                        </div>
-
-                    </div>
-                </div>
-                <div id="contact" class="row">
-                    <div class="col-md-6">
-                        <div class="terms text-center">
-                            <br></br>
-                            <br></br>
-                            <h2>ช่องทางการติดต่อ</h2>
-                            <h3>Tel. 0 2831 3406-7</h3>
-                            <p class="call-to-action"><h3>Line id: <a href="https://lin.ee/IXZnVrP" target="_blank" id="alt-downloads-insiders">@961ugpvt</h3></a></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+<body>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหา</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/apple-touch-icon.png" width="38" height="38" alt="">
+        <span>THP VPN<small>คู่มือและความช่วยเหลือ</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>เมนู <span aria-hidden="true">☰</span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="เมนูหลัก">
+        <a href="#start">เริ่มใช้งาน</a>
+        <a href="#alt-downloads">ดาวน์โหลด</a>
+        <a href="support.html">แก้ปัญหา</a>
+        <a href="#contact">ติดต่อเจ้าหน้าที่</a>
+      </nav>
     </div>
-    <script src="js/index.js"></script>
-    <script src="js/popup.js"></script>
+  </header>
+<main id="main-content" tabindex="-1">
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <h1>คู่มือการใช้งาน FortiClient VPN</h1>
+        <p class="lead">ขอสิทธิ์ใช้งาน ดาวน์โหลดโปรแกรม<br class="desktop-break"> และแก้ไขปัญหาการเชื่อมต่อ VPN</p>
+        <a class="button button-primary" href="#start">เริ่มใช้งานครั้งแรก</a>
+      </div>
+      <aside class="quick-access" aria-labelledby="quick-title">
+        <h2 id="quick-title">มีบัญชีใช้งานแล้ว?</h2>
+        <a class="quick-link" href="#alt-downloads"><span><strong>ดาวน์โหลดโปรแกรม</strong><small>เลือกตัวติดตั้งให้ตรงกับอุปกรณ์</small></span><span aria-hidden="true">↗</span></a>
+        <a class="quick-link" href="docs/คู่เข้าใช้งาน VPN Forticlient สำหรับ windows.pdf" target="_blank" rel="noopener noreferrer"><span><strong>ดูวิธีเชื่อมต่อ VPN</strong><small>คู่มือ Windows · PDF · เปิดแท็บใหม่</small></span><span aria-hidden="true">↗</span></a>
+        <a class="quick-link" href="support.html"><span><strong>แก้ปัญหาการใช้งาน</strong><small>เข้าระบบไม่ได้ / ติดตั้ง Token ใหม่</small></span><span aria-hidden="true">↗</span></a>
+      </aside>
+    </div>
+  </section>
+  <div class="container">
+    <aside class="service-notice" aria-label="ประกาศการให้บริการ"><strong>Cisco AnyConnect ปิดให้บริการแล้ว</strong><span>หากต้องการใช้งาน VPN ต่อ ให้ดำเนินการขอสิทธิ์ใช้งาน FortiClient</span><a href="#start">ดูขั้นตอนเริ่มใช้งาน</a></aside>
+    <section class="section" id="start" aria-labelledby="start-title">
+      <div class="section-heading"><div><p class="eyebrow">สำหรับผู้ใช้ใหม่</p><h2 id="start-title">เริ่มใช้งานใน 3 ขั้นตอน</h2></div><p>เริ่มจากขอสิทธิ์ก่อนติดตั้งโปรแกรม</p></div>
+      <span id="manaul" aria-hidden="true"></span>
+      <ol class="steps">
+        <li><span class="step-number" aria-hidden="true">1</span><h3>ขอสิทธิ์ใช้งาน</h3><p>ทำรายการผ่านระบบ IT Service ตามคู่มือ และรอข้อมูลจากเจ้าหน้าที่ก่อนติดตั้ง</p><a class="text-link" href="docs/คู่มือการใช้งานระบบ IT Service .pdf" target="_blank" rel="noopener noreferrer">อ่านคู่มือขอสิทธิ์ <span class="file-label">PDF</span><span class="sr-only"> (เปิดแท็บใหม่)</span></a></li>
+        <li><span class="step-number" aria-hidden="true">2</span><h3>ดาวน์โหลดและติดตั้ง</h3><p>เลือกโปรแกรมตามอุปกรณ์ของคุณ แล้วทำตามคู่มือการติดตั้ง</p><a class="text-link" href="#alt-downloads">เลือกอุปกรณ์และดาวน์โหลด</a><a class="secondary-link" href="https://drive.google.com/drive/folders/1BemTgVOzoAbQRNlOjLrfPfoh1gvj32aT?usp=drive_link" target="_blank" rel="noopener noreferrer">เปิดโฟลเดอร์คู่มือติดตั้ง<span class="sr-only"> (เปิดแท็บใหม่)</span></a></li>
+        <li><span class="step-number" aria-hidden="true">3</span><h3>เชื่อมต่อ VPN</h3><p>ตั้งค่าโปรแกรมด้วยข้อมูลที่ได้รับจากเจ้าหน้าที่ แล้วเชื่อมต่อตามคู่มือ</p><a class="text-link" href="docs/คู่เข้าใช้งาน VPN Forticlient สำหรับ windows.pdf" target="_blank" rel="noopener noreferrer">อ่านคู่มือเชื่อมต่อ Windows <span class="file-label">PDF</span><span class="sr-only"> (เปิดแท็บใหม่)</span></a><a class="secondary-link" href="instrucwindows.html">ขั้นตอนหลังติดตั้ง Windows</a></li>
+      </ol>
+    </section>
+  </div>
+  <section class="downloads-section section" id="alt-downloads" aria-labelledby="downloads-title">
+    <div class="container">
+      <div class="section-heading"><div><p class="eyebrow">สำหรับผู้ที่ได้รับสิทธิ์แล้ว</p><h2 id="downloads-title">เลือกอุปกรณ์ของคุณ</h2></div><a class="text-link" href="#device-help">ไม่แน่ใจว่าใช้เครื่องแบบไหน?</a></div>
+      <div class="download-grid">
+        <article class="download-panel">
+          <div class="platform-title"><img src="images/windows-logo.png" width="32" height="32" alt=""><h3>Windows</h3></div>
+          <p>ตรวจสอบ “System type” ก่อนเลือกตัวติดตั้ง</p>
+          <div class="download-row"><div><h4>Windows 64 บิต (x64)</h4><p>สำหรับเครื่องที่ระบุ x64-based processor</p><small>Windows 8.1 / 10 / 11</small></div><a class="button button-primary" href="https://drive.usercontent.google.com/download?id=10xzWSTRw_L1sOFKRRFJ45gT8dhKUtwS7&amp;export=download&amp;authuser=0&amp;confirm=t&amp;uuid=f37636d8-aef5-4898-8609-68e16dbd24ed&amp;at=APvzH3ovHZrMS2o-dLLyRzks_vhS:1735361327883" target="_blank" rel="noopener noreferrer">ดาวน์โหลด x64<span class="sr-only"> (เปิดแท็บใหม่)</span></a></div>
+          <div class="download-row"><div><h4>Windows 32 บิต (x86)</h4><p>สำหรับระบบปฏิบัติการ 32 บิต</p></div><a class="button button-outline" href="https://drive.usercontent.google.com/download?id=1rkXbrCzuE2-_PimQUgE0N5A5tfv1phIG&amp;export=download&amp;authuser=0&amp;confirm=t&amp;uuid=e8256394-30f9-4eed-a16b-86b80ad0806e&amp;at=AN_67v3kLBGxo5Fthjt8xW9zo_12:1730268603476" target="_blank" rel="noopener noreferrer">ดาวน์โหลด x86<span class="sr-only"> (เปิดแท็บใหม่)</span></a></div>
+          <div class="download-row"><div><h4>Windows ARM</h4><p>สำหรับเครื่องที่ระบุ ARM-based processor</p></div><a class="button button-outline" href="https://drive.usercontent.google.com/download?id=1qiMwtyfKRekaLz3_zNRMA2XuQvIC5Jw2&amp;export=download&amp;authuser=0&amp;confirm=t&amp;uuid=266173f5-0684-4e8e-ab91-df67b8beb16a&amp;at=AN8xHopY0YGdDPv5csgj_keAN-2N:1756089952661" target="_blank" rel="noopener noreferrer">ดาวน์โหลด ARM<span class="sr-only"> (เปิดแท็บใหม่)</span></a></div>
+          <p class="download-note">ปุ่มดาวน์โหลดเปิดไฟล์บน Google Drive ในแท็บใหม่</p>
+        </article>
+        <article class="download-panel">
+          <div class="platform-title"><img src="images/apple-logo.svg" width="32" height="32" alt=""><h3>Mac</h3></div>
+          <p>ใช้ตัวติดตั้งชุดเดียวกันได้ทั้ง Intel และ Apple silicon</p>
+          <div class="download-row"><div><h4>FortiClient สำหรับ macOS</h4><p>รองรับ Intel และชิป Apple M1 / M2 / M3 / M4 ฯลฯ</p></div><a class="button button-primary" href="https://links.fortinet.com/forticlient/mac/fabricagent" target="_blank" rel="noopener noreferrer">ดาวน์โหลด macOS<span class="sr-only"> (เปิดแท็บใหม่)</span></a></div>
+          <p class="download-note">ตัวติดตั้งออนไลน์จาก Fortinet (.dmg) ต้องเชื่อมต่ออินเทอร์เน็ตขณะติดตั้ง</p>
+        </article>
+      </div>
+      <details class="device-help" id="device-help">
+        <summary>ดูวิธีตรวจสอบรุ่นเครื่องก่อนดาวน์โหลด</summary>
+        <div class="details-body two-columns">
+          <div><h3>Windows</h3><p>เปิด <strong>Start › Settings › System › About</strong> แล้วดู <strong>System type</strong> ในส่วน Device specifications</p><ul><li>64-bit และ x64-based processor → เลือก x64</li><li>32-bit operating system → เลือก x86</li><li>ARM-based processor → เลือก ARM</li></ul><a class="secondary-link" href="https://support.microsoft.com/en-us/windows/experience/compatibility/32-bit-and-64-bit-windows-frequently-asked-questions" target="_blank" rel="noopener noreferrer">ดูคำแนะนำจาก Microsoft<span class="sr-only"> (เปิดแท็บใหม่)</span></a></div>
+          <div><h3>Mac</h3><p>เลือก <strong>ดาวน์โหลด macOS</strong> ได้เลย ทั้งเครื่อง Intel และ Apple silicon ใช้ตัวติดตั้งชุดเดียวกัน ไม่ต้องแยกตามชิป</p><p>หากติดตั้งไม่สำเร็จ <a href="#contact">ติดต่อเจ้าหน้าที่</a> พร้อมแจ้งรุ่น macOS ที่ใช้งาน</p></div>
+        </div>
+      </details>
+      <aside class="app-notice" aria-labelledby="app-notice-title"><div><h3 id="app-notice-title">ใช้ Mac, iPhone, iPad หรือ Android?</h3><p>สำหรับการเข้าระบบผ่าน Remote Desktop ให้เปลี่ยนไปใช้ <strong>Windows App</strong> ตามประกาศการใช้งาน</p></div><a class="text-link" href="images/rd-winapp.jpg" target="_blank" rel="noopener noreferrer">ดูภาพประกาศ<span class="sr-only"> (เปิดแท็บใหม่)</span></a></aside>
+    </div>
+  </section>
+  <section class="section container support-strip" aria-labelledby="help-title"><div><h2 id="help-title">เชื่อมต่อแล้ว แต่ยังใช้งานไม่ได้?</h2><p>ตรวจสอบสถานะ FortiClient หรือดูวิธีลงทะเบียน FortiToken ใหม่</p></div><a class="button button-outline" href="support.html">ดูวิธีแก้ปัญหา</a></section>
+</main>
+  <footer class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <div><h2>ให้เราช่วยคุณ</h2><p>ติดตั้งไม่สำเร็จ เชื่อมต่อไม่ได้ หรือไม่แน่ใจว่าควรเลือกอะไร</p></div>
+      <div class="contact-actions">
+        <a class="button button-primary" href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a>
+        <p>โทร <a href="tel:028313406">0 2831 3406</a> หรือ <a href="tel:028313407">0 2831 3407</a></p>
+      </div>
+    </div>
+    <div class="container footer-note">THP VPN · คู่มือการใช้งาน FortiClient</div>
+  </footer>
 </body>
 </html>

@@ -1,64 +1,82 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="th">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Support</title>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style-support.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>แก้ปัญหาการใช้งาน | THP VPN</title>
+  <meta name="description" content="วิธีตรวจสอบเมื่อเชื่อมต่อ VPN แล้วเข้าใช้งานไม่ได้ และวิธีลงทะเบียน FortiToken ใหม่">
+  <link rel="icon" href="images/apple-touch-icon.png" type="image/png">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/index.js" defer></script>
 </head>
 <body>
-    <div id="main">
-        <div class="navbar-fixed-container">
-            <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix" data-offset-top="1">
-                <nav role="navigation" aria-label="Top Level">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <a class="navbar-fixed-container" href="https://docs-spaces.github.io/thpvpn2/">กลับสู่หน้าหลัก</a>
-                        </div>
-                    </div>
-                </nav>
-            </div>
-        </div>
-    <h1>วิธีแก้ไขปัญหาเบื้องต้น</h1>
-    <div class="container">
-        <div class="instructions">
-            <ol>
-                <li onclick="toggleDetails(this)">
-                    <b>เชื่อมต่อ VPN ได้แล้ว </b>แต่ไม่สามารถเข้าใช้ระบบงานได้ <b>คลิก</b> เพื่อดูวิธีตรวจสอบเบื้องต้น
-                    <div class="details">
-                        <br>ในกรณีที่เชื่อมต่อ VPN ได้แล้ว แต่ไม่สามารถเข้าใช้งานระบบงานได้ สามารถทำการตรวจสอบดังนี้ </br>
-                        - ตรวจสอบ <b>ZERO TRUST TELEMETRY</b> ว่าสถานะ <b>Connected</b> หรือไม่ และ <b>ชื่อถูกต้องหรือไม่</b>
-                        <img class="adapt-img" src="images/2.PNG" alt="Step 1" width="700" height="440" onclick="zoomImage(this)">
-                        <b>**หากตรวจสอบแล้วไม่ถูกต้องกรุณาดำเนินการตามนี้**</b>
-                        <img class="adapt-img" src="images/windowsinvite.jpg" alt="Step 1" width="700" height="440" onclick="zoomImage(this)">
-                        - หลังจากดำเนินการแล้ว <b>ZERO TRUST TELEMETRY</b> ต้องขึ้นสถานะ <b>Connected</b> และ <b>แสดงชื่อถูกต้องตามรูปแบบ ตามภาพแรก</b>
-                        <br></br>
-                        <h5>หากดำเนินการแล้วยังไม่สามารถใช้งานได้หรือสอบถามเพิ่มเติมติดต่อที่ LINE: THP VPN ID: @961ugpvt</h5>
-                    </div>
-                </li>
-
-                <li onclick="toggleDetails(this)">
-                    กรณีที่ต้องการ <b>ติดตั้ง Token ใหม่</b>
-                    <div class="details">
-                        - กรณีที่เปิด Forti Token แล้ว <b>ไม่พบ Token</b> ตามภาพด้านล่าง หรือ เปลี่ยนเครื่องใหม่ หรือ ติดตั้งแอป Forti Token ใหม่
-                        <img class="adapt-img" src="images/emthytoken.jpg" alt="Step 1" width="200" height="120" onclick="zoomImage(this)">
-                        <h5>**(แจ้งที่ IDLine:@961ugpvt เพื่อขอ QR CODE สำหรับลงทะเบียน Forti Token ใหม่ได้เลย)**</h5>
-                        - หลังจากได้รับ QR CODE ทางเมลแล้วให้ทำการกดปุ่ม <b>SCAN BARCODE</b> จากแอป Forti Token แล้วสแกน QR CODE เป็นอันเสร็จสิ้น <h5>โดยเมลที่ส่งให้มีชื่อเรื่อง FTM Activation on FortiGate และส่งจาก DoNotReply@notification.fortinet.net เท่านั้น (ตามภาพด้านล่างนี้)</h5>
-                        <img class="adapt-img" src="images/mailtoken.jpg" alt="Step 1" width="300" height="100" onclick="zoomImage(this)">
-                    </div>
-                </li>
-            </ol>
-        </div>
+  <a class="skip-link" href="#main-content">ข้ามไปยังเนื้อหา</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/apple-touch-icon.png" width="38" height="38" alt="">
+        <span>THP VPN<small>คู่มือและความช่วยเหลือ</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>เมนู <span aria-hidden="true">☰</span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="เมนูหลัก">
+        <a href="index.html#start">เริ่มใช้งาน</a>
+        <a href="index.html#alt-downloads">ดาวน์โหลด</a>
+        <a href="support.html" aria-current="page">แก้ปัญหา</a>
+        <a href="#contact">ติดต่อเจ้าหน้าที่</a>
+      </nav>
     </div>
-
-    <!-- The Modal -->
-    <div id="myModal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="img01" ondblclick="toggleZoom()">
-        <div class="zoom-instruction">Double click to zoom</div>
+  </header>
+<main id="main-content" tabindex="-1">
+  <div class="page-heading"><div class="container reading-width"><a class="breadcrumb" href="index.html">กลับหน้าหลัก</a><h1>แก้ปัญหาการใช้งาน VPN</h1><p>เลือกอาการที่คุณพบ แล้วทำตามขั้นตอนด้านล่าง<br>หากยังใช้งานไม่ได้ ติดต่อเจ้าหน้าที่ผ่าน LINE @961ugpvt</p></div></div>
+  <section class="section container reading-width faq" aria-label="ปัญหาที่พบบ่อย">
+    <details id="connected-no-access">
+      <summary>เชื่อมต่อ VPN ได้แล้ว แต่เข้าใช้งานระบบงานไม่ได้</summary>
+      <div class="details-body">
+        <h2>ตรวจสอบสถานะ Zero Trust Telemetry</h2>
+        <ol>
+          <li>เปิด FortiClient แล้วไปที่ <strong>ZERO TRUST TELEMETRY</strong></li>
+          <li>ตรวจสอบว่าสถานะเป็น <strong>Connected</strong> และชื่อผู้ใช้งานเป็นของคุณ</li>
+        </ol>
+        <figure class="figure"><a class="image-link" href="images/2.PNG" data-lightbox aria-label="ขยายภาพ: ตัวอย่างสถานะ Connected และตำแหน่งชื่อผู้ใช้งาน"><img src="images/2.PNG" alt="ตัวอย่างสถานะ Connected และตำแหน่งชื่อผู้ใช้งาน" loading="lazy"></a><figcaption>ตัวอย่างสถานะ Connected และตำแหน่งชื่อผู้ใช้งาน · เลือกภาพเพื่อขยาย</figcaption></figure>
+        <h3>หากสถานะหรือชื่อไม่ถูกต้อง</h3>
+        <p>ดำเนินการตามภาพด้านล่าง โดยใช้ข้อมูลที่ได้รับจากเจ้าหน้าที่</p>
+        <figure class="figure"><a class="image-link" href="images/windowsinvite.jpg" data-lightbox aria-label="ขยายภาพ: ขั้นตอนใส่ข้อมูลเชื่อมต่อ Zero Trust Telemetry บน Windows"><img src="images/windowsinvite.jpg" alt="ขั้นตอนใส่ข้อมูลเชื่อมต่อ Zero Trust Telemetry บน Windows" loading="lazy"></a><figcaption>ขั้นตอนใส่ข้อมูลเชื่อมต่อ Zero Trust Telemetry บน Windows · เลือกภาพเพื่อขยาย</figcaption></figure>
+        <p>เมื่อตั้งค่าเสร็จ ให้ตรวจสอบอีกครั้งว่าแสดง <strong>Connected</strong> และชื่อผู้ใช้งานถูกต้อง แล้วลองเข้าระบบงานใหม่</p>
+        <p class="note">หากยังไม่สำเร็จ <a href="#contact">ติดต่อเจ้าหน้าที่</a> พร้อมแจ้งอาการที่พบ</p>
+      </div>
+    </details>
+    <details id="new-token">
+      <summary>ไม่พบ FortiToken / เปลี่ยนเครื่อง / ติดตั้ง Token ใหม่</summary>
+      <div class="details-body">
+        <h2>ขอ QR Code เพื่อลงทะเบียนใหม่</h2>
+        <p>ใช้ขั้นตอนนี้เมื่อเปิดแอป FortiToken แล้วไม่พบ Token เปลี่ยนโทรศัพท์ หรือติดตั้งแอปใหม่</p>
+        <figure class="figure"><a class="image-link" href="images/emthytoken.jpg" data-lightbox aria-label="ขยายภาพ: ตัวอย่างแอป FortiToken ที่ยังไม่มี Token"><img src="images/emthytoken.jpg" alt="ตัวอย่างแอป FortiToken ที่ยังไม่มี Token" loading="lazy"></a><figcaption>ตัวอย่างแอป FortiToken ที่ยังไม่มี Token · เลือกภาพเพื่อขยาย</figcaption></figure>
+        <ol>
+          <li><a href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a> เพื่อขอ QR Code สำหรับลงทะเบียน FortiToken ใหม่</li>
+          <li>ตรวจสอบอีเมลหัวข้อ <strong>FTM Activation on FortiGate</strong> จาก <strong class="wrap-anywhere">DoNotReply@notification.fortinet.net</strong></li>
+          <li>เปิดแอป FortiToken เลือก <strong>SCAN BARCODE</strong> แล้วสแกน QR Code ที่ได้รับทางอีเมล</li>
+        </ol>
+        <p class="note">หากยังไม่ได้รับอีเมลหรือลงทะเบียนไม่สำเร็จ <a href="#contact">ติดต่อเจ้าหน้าที่</a> เพื่อช่วยตรวจสอบ</p>
+      </div>
+    </details>
+    <div class="support-strip"><div><h2>กำลังติดตั้งครั้งแรก?</h2><p>ตรวจสอบขั้นตอนตั้งค่า FortiClient หลังติดตั้ง</p></div><a class="button button-outline" href="instrucwindows.html">ดูขั้นตอนสำหรับ Windows</a></div>
+  </section>
+</main>
+  <footer class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <div><h2>ให้เราช่วยคุณ</h2><p>ติดตั้งไม่สำเร็จ เชื่อมต่อไม่ได้ หรือไม่แน่ใจว่าควรเลือกอะไร</p></div>
+      <div class="contact-actions">
+        <a class="button button-primary" href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a>
+        <p>โทร <a href="tel:028313406">0 2831 3406</a> หรือ <a href="tel:028313407">0 2831 3407</a></p>
+      </div>
     </div>
-
-    <script src="js/support.js"></script>
+    <div class="container footer-note">THP VPN · คู่มือการใช้งาน FortiClient</div>
+  </footer>
+<dialog class="image-dialog" aria-labelledby="image-dialog-title" aria-describedby="image-caption">
+  <div class="dialog-toolbar"><h2 id="image-dialog-title">ภาพประกอบขั้นตอน</h2><div class="dialog-actions"><button type="button" class="button button-outline" id="zoom-image" aria-pressed="false">ขยายภาพ</button><button type="button" class="button button-primary" id="close-image" autofocus>ปิดภาพ</button></div></div>
+  <div class="dialog-image-area" tabindex="0" role="region" aria-label="ภาพขยาย ใช้ปุ่มลูกศรเพื่อเลื่อนดู"><img id="expanded-image" alt=""></div>
+  <p class="dialog-caption" id="image-caption"></p>
+</dialog>
+<script src="js/support.js" defer></script>
 </body>
 </html>
