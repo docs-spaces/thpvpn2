@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>คู่มือ FortiClient สำหรับ iPhone / iPad | THP VPN</title>
+  <meta name="description" content="คู่มือติดตั้ง FortiClient และ FortiToken สำหรับ iPhone และ iPad พร้อมภาพทีละขั้น">
+  <link rel="icon" href="images/apple-touch-icon.png" type="image/png">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/index.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">ข้ามไปเนื้อหาหลัก</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/apple-touch-icon.png" width="38" height="38" alt="">
+        <span>THP VPN<small>FortiClient VPN</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>เมนู <span aria-hidden="true">☰</span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="เมนูหลัก">
+        <a href="index.html#start">เริ่มใช้งาน</a>
+        <a href="index.html#alt-downloads">ดาวน์โหลด</a>
+        <a href="guides.html" aria-current="page">คู่มือ</a>
+        <a href="support.html">แก้ปัญหา</a>
+        <a href="#contact">ติดต่อเจ้าหน้าที่</a>
+      </nav>
+    </div>
+  </header>
+  <main id="main-content" tabindex="-1">
+    <div class="page-heading"><div class="container reading-width">
+      <a class="breadcrumb" href="guides.html#ios-guide">กลับไปศูนย์รวมคู่มือ</a>
+      <h1>คู่มือติดตั้ง FortiClient บน iPhone / iPad</h1>
+      <p>FortiClient > FortiToken > THP VPN</p>
+    </div></div>
+    <section class="section container reading-width" aria-label="คู่มือ iPhone และ iPad">
+      <p class="note"><strong>ก่อนเริ่ม:</strong> เตรียม Internet, Invitation Code และ Username / Password</p>
+
+      <h2 class="guide-section-title">ส่วนที่ 1 - ติดตั้ง FortiClient</h2>
+      <ol class="instruction-list">
+        <li>
+          <h2>ดาวน์โหลด FortiClient</h2>
+          <p>ดาวน์โหลดจาก App Store แล้วเปิดแอป</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-download-forticlient.jpeg" data-lightbox aria-label="ขยายภาพดาวน์โหลด FortiClient"><img src="images/guide-ios-download-forticlient.jpeg" alt="หน้าดาวน์โหลด FortiClient บนมือถือ" loading="lazy"></a><figcaption>App Store</figcaption></figure>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-login-provider.jpeg" data-lightbox aria-label="ขยายภาพหน้ากด Next"><img src="images/guide-ios-login-provider.jpeg" alt="หน้าแรก FortiClient ที่มีปุ่ม Next" loading="lazy"></a><figcaption>กด Next</figcaption></figure>
+        </li>
+        <li>
+          <h2>เลือก Invitation Code</h2>
+          <p>กด Connect แล้วเลือก Invitation Code</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-invitation-menu.png" data-lightbox aria-label="ขยายภาพเลือก Invitation Code"><img src="images/guide-ios-invitation-menu.png" alt="หน้าจอ Zero Trust Telemetry และเมนู Invitation Code" loading="lazy"></a><figcaption>Connect → Invitation Code</figcaption></figure>
+        </li>
+        <li>
+          <h2>กรอก Invitation Code และเข้าสู่ระบบ</h2>
+          <p>กรอก Invitation Code แล้วกด OK จากนั้นกรอก Username / Password และกด Login</p>
+          <div class="guide-image-pair">
+            <figure class="figure"><a class="image-link" href="images/guide-ios-invitation-code.jpeg" data-lightbox aria-label="ขยายภาพกรอก Invitation Code"><img src="images/guide-ios-invitation-code.jpeg" alt="ช่องกรอก Invitation Code" loading="lazy"></a><figcaption>กรอก Invitation Code</figcaption></figure>
+            <figure class="figure"><a class="image-link" href="images/guide-ios-forticlient-login.jpeg" data-lightbox aria-label="ขยายภาพ Login"><img src="images/guide-ios-forticlient-login.jpeg" alt="หน้าต่าง Login ของ FortiClient" loading="lazy"></a><figcaption>ใส่ Username / Password แล้วกด Login</figcaption></figure>
+          </div>
+        </li>
+      </ol>
+
+      <h2 class="guide-section-title" id="fortitoken">ส่วนที่ 2 - ตั้งค่า FortiToken</h2>
+      <ol class="instruction-list">
+        <li>
+          <h2>FortiToken Mobile</h2>
+          <p>ดาวน์โหลดแอป FortiToken Mobile</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-download-token.png" data-lightbox aria-label="ขยายภาพดาวน์โหลด FortiToken"><img src="images/guide-ios-download-token.png" alt="หน้าFortiToken Mobile" loading="lazy"></a><figcaption>FortiToken Mobile</figcaption></figure>
+        </li>
+        <li>
+          <h2>ลงทะเบียน Token</h2>
+          <p>เลือก Scan Barcode หรือ Enter Manually จากอีเมล FTM Activation on FortiGate</p>
+          <p class="note"><strong>ห้ามแชร์ QR Code หรือ Key:</strong> ข้อมูลนี้ใช้ลงทะเบียนเฉพาะบุคคล</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-token-enroll.png" data-lightbox aria-label="ขยายภาพลงทะเบียน FortiToken"><img src="images/guide-ios-token-enroll.png" alt="หน้าลงทะเบียน FortiToken" loading="lazy"></a><figcaption>เลือก Scan Barcode หรือ Enter Manually</figcaption></figure>
+        </li>
+        <li>
+          <h2>ดู Token</h2>
+          <p>กดรูปตาเพื่อดูเลข Token 6 หลัก</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-token-view.png" data-lightbox aria-label="ขยายภาพดู Token"><img src="images/guide-ios-token-view.png" alt="ตัวอย่างการกดรูปตาเพื่อดูเลข Token" loading="lazy"></a><figcaption>Token 6 หลัก</figcaption></figure>
+        </li>
+      </ol>
+
+      <h2 class="guide-section-title" id="connect-vpn">ส่วนที่ 3 - เชื่อมต่อ THP VPN</h2>
+      <ol class="instruction-list">
+        <li>
+          <h2>เลือก VPN และกรอก Username / Password</h2>
+          <p>เลือก VPN > THP_VPN > Connect แล้วกรอก Username / Password</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-vpn-menu.png" data-lightbox aria-label="ขยายภาพเมนู VPN"><img src="images/guide-ios-vpn-menu.png" alt="ขั้นตอนเลือก VPN และกรอก Username Password" loading="lazy"></a><figcaption>เลือก VPN → THP_VPN → Connect → กรอก Username / Password</figcaption></figure>
+        </li>
+        <li>
+          <h2>ยืนยัน Token</h2>
+          <p><strong>วิธีที่ 2:</strong> กด Approve ใน FortiToken</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-approve.jpeg" data-lightbox aria-label="ขยายภาพ Approve"><img src="images/guide-ios-approve.jpeg" alt="การแจ้งเตือน FortiToken พร้อมปุ่ม Approve" loading="lazy"></a><figcaption>กด Approve เมื่อได้รับการแจ้งเตือน</figcaption></figure>
+        </li>
+        <li>
+          <h2>ตรวจสอบ Connected</h2>
+          <p>สถานะต้องเป็น Connected</p>
+          <figure class="figure"><a class="image-link" href="images/guide-ios-connected.png" data-lightbox aria-label="ขยายภาพสถานะ Connected"><img src="images/guide-ios-connected.png" alt="หน้าจอ VPN แสดง Connected" loading="lazy"></a><figcaption>Connected</figcaption></figure>
+        </li>
+      </ol>
+
+      <div class="support-strip"><div><h2>มีปัญหา?</h2><p>ดูวิธีแก้ปัญหา</p></div><a class="button button-outline" href="support.html">เปิดหน้าแก้ปัญหา</a></div>
+    </section>
+  </main>
+  <footer class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <div><h2>มีปัญหา?</h2><p>ติดต่อเจ้าหน้าที่</p></div>
+      <div class="contact-actions">
+        <a class="button button-primary" href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a>
+        <p>โทร <a href="tel:028313406">0 2831 3406</a> หรือ <a href="tel:028313407">0 2831 3407</a></p>
+      </div>
+    </div>
+    <div class="container footer-note">THP VPN · คู่มือ iPhone / iPad</div>
+  </footer>
+  <dialog class="image-dialog" aria-labelledby="image-dialog-title" aria-describedby="image-caption">
+    <div class="dialog-toolbar"><h2 id="image-dialog-title">ภาพประกอบคู่มือ</h2><div class="dialog-actions"><button type="button" class="button button-outline" id="zoom-image" aria-pressed="false">ขยายภาพ</button><button type="button" class="button button-primary" id="close-image" autofocus>ปิด</button></div></div>
+    <div class="dialog-image-area" tabindex="0" role="region" aria-label="ภาพขยาย สามารถเลื่อนดูภาพได้"><img id="expanded-image" alt=""></div>
+    <p class="dialog-caption" id="image-caption"></p>
+  </dialog>
+  <script src="js/support.js" defer></script>
+</body>
+</html>

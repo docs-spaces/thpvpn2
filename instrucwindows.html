@@ -15,36 +15,37 @@
     <div class="container header-inner">
       <a class="brand" href="index.html">
         <img src="images/apple-touch-icon.png" width="38" height="38" alt="">
-        <span>THP VPN<small>คู่มือและความช่วยเหลือ</small></span>
+        <span>THP VPN<small>FortiClient VPN</small></span>
       </a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>เมนู <span aria-hidden="true">☰</span></button>
       <nav class="primary-nav" id="primary-nav" aria-label="เมนูหลัก">
         <a href="index.html#start">เริ่มใช้งาน</a>
         <a href="index.html#alt-downloads">ดาวน์โหลด</a>
+        <a href="guides.html">คู่มือ</a>
         <a href="support.html">แก้ปัญหา</a>
         <a href="#contact">ติดต่อเจ้าหน้าที่</a>
       </nav>
     </div>
   </header>
 <main id="main-content" tabindex="-1">
-  <div class="page-heading"><div class="container reading-width"><a class="breadcrumb" href="index.html#start">กลับไปขั้นตอนเริ่มใช้งาน</a><h1>ตั้งค่า FortiClient บน Windows</h1><p>ทำตามขั้นตอนนี้หลังติดตั้งโปรแกรม โดยเตรียมข้อมูล Username, Password และ Invitation Code ที่ได้รับจากเจ้าหน้าที่</p></div></div>
+  <div class="page-heading"><div class="container reading-width"><a class="breadcrumb" href="index.html#start">กลับไปขั้นตอนเริ่มใช้งาน</a><h1>ตั้งค่า FortiClient บน Windows</h1><p>เตรียม Username / Password และ Invitation Code</p></div></div>
   <section class="section container reading-width" aria-label="ขั้นตอนหลังติดตั้ง">
-    <p class="note"><strong>ก่อนเริ่ม:</strong> Username และ Password ที่เจ้าหน้าที่แจ้งสำหรับการติดตั้งใหม่ ใช้สำหรับขั้นตอนติดตั้งนี้เท่านั้น</p>
+    <p class="note"><strong>ก่อนเริ่ม:</strong> Username / Password ชุดนี้ใช้สำหรับติดตั้งครั้งแรก</p>
     <ol class="instruction-list">
-      <li><h2>เปิด FortiClient และลงชื่อเข้าใช้</h2><p>หลังติดตั้ง รอให้โปรแกรมเปิดอัตโนมัติ เมื่อหน้าลงชื่อเข้าใช้ปรากฏ ให้ใส่ <strong>Username</strong> และ <strong>Password</strong> ที่ได้รับ แล้วกด <strong>Sign in</strong></p>
+      <li><h2>เปิด FortiClient และลงชื่อเข้าใช้</h2><p>เมื่อ FortiClient เปิด ให้กรอก <strong>Username</strong> และ <strong>Password</strong> ที่ได้รับ แล้วกด <strong>Sign in</strong></p>
       <figure class="figure"><a class="image-link" href="images/3.1.png" data-lightbox aria-label="ขยายภาพ: หน้าลงชื่อเข้าใช้ FortiClient หลังติดตั้ง"><img src="images/3.1.png" alt="หน้าลงชื่อเข้าใช้ FortiClient หลังติดตั้ง" loading="lazy"></a><figcaption>หน้าลงชื่อเข้าใช้ FortiClient หลังติดตั้ง · เลือกภาพเพื่อขยาย</figcaption></figure></li>
-      <li><h2>หากโปรแกรมไม่เปิด หรือยังไม่ขึ้นหน้าลงชื่อเข้าใช้</h2><p>ดับเบิลคลิกไอคอน FortiClient ที่มุมขวาล่างของ Windows ใส่ <strong>Invitation Code</strong> ในช่อง <strong>Enter Server address or Invitation Code</strong> แล้วกด <strong>Connect</strong> จากนั้นลงชื่อเข้าใช้ตามขั้นตอนแรก</p>
+      <li><h2>ถ้า FortiClient ไม่เปิดอัตโนมัติ</h2><p>ดับเบิลคลิกไอคอน FortiClient มุมขวาล่าง แล้วใส่ <strong>Invitation Code</strong> ในช่อง <strong>Enter Server address or Invitation Code</strong> แล้วกด <strong>Connect</strong> แล้ว Sign in</p>
       <figure class="figure"><a class="image-link" href="images/1.1.png" data-lightbox aria-label="ขยายภาพ: ช่องกรอก Server address หรือ Invitation Code"><img src="images/1.1.png" alt="ช่องกรอก Server address หรือ Invitation Code" loading="lazy"></a><figcaption>ช่องกรอก Server address หรือ Invitation Code · เลือกภาพเพื่อขยาย</figcaption></figure></li>
-      <li><h2>ตรวจสอบสถานะและชื่อผู้ใช้งาน</h2><p>ในหน้า <strong>ZERO TRUST TELEMETRY</strong> สถานะต้องเป็น <strong>Connected</strong> และชื่อใต้รูปโปรไฟล์ตรงกับ Username ที่ใช้ลงชื่อเข้าใช้</p>
+      <li><h2>ตรวจสอบสถานะและชื่อผู้ใช้งาน</h2><p>ในหน้า <strong>ZERO TRUST TELEMETRY</strong> สถานะต้องเป็น <strong>Connected</strong> ชื่อผู้ใช้ต้องตรงกับ Username</p>
       <figure class="figure"><a class="image-link" href="images/2.PNG" data-lightbox aria-label="ขยายภาพ: ตัวอย่างสถานะ Connected หลังตั้งค่าเรียบร้อย"><img src="images/2.PNG" alt="ตัวอย่างสถานะ Connected หลังตั้งค่าเรียบร้อย" loading="lazy"></a><figcaption>ตัวอย่างสถานะ Connected หลังตั้งค่าเรียบร้อย · เลือกภาพเพื่อขยาย</figcaption></figure>
-      <p>สถานะนี้เป็นการเชื่อมต่อ Telemetry ขั้นตอนถัดไปให้เชื่อมต่อ VPN ตามคู่มือการใช้งาน</p></li>
+      <p>จากนั้นเชื่อมต่อ VPN</p></li>
     </ol>
     <div class="support-strip"><a class="button button-primary" href="docs/คู่เข้าใช้งาน VPN Forticlient สำหรับ windows.pdf" target="_blank" rel="noopener noreferrer">อ่านคู่มือเชื่อมต่อ VPN (PDF)<span class="sr-only"> เปิดแท็บใหม่</span></a><a class="text-link" href="support.html">ดูวิธีแก้ปัญหา</a></div>
   </section>
 </main>
   <footer class="contact-section" id="contact">
     <div class="container contact-inner">
-      <div><h2>ให้เราช่วยคุณ</h2><p>ติดตั้งไม่สำเร็จ เชื่อมต่อไม่ได้ หรือไม่แน่ใจว่าควรเลือกอะไร</p></div>
+      <div><h2>ให้เราช่วยคุณ</h2><p>มีปัญหา?</p></div>
       <div class="contact-actions">
         <a class="button button-primary" href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a>
         <p>โทร <a href="tel:028313406">0 2831 3406</a> หรือ <a href="tel:028313407">0 2831 3407</a></p>

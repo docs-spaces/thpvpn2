@@ -165,3 +165,66 @@ body.dialog-open { overflow: hidden; }
   .instruction-list > li { padding-left: 4px; }
 }
 @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+
+/* Guide hub */
+.guide-hero { background: #33333b; color: white; border-bottom: 1px solid #44444b; }
+.guide-hero-grid { display: grid; grid-template-columns: 1.35fr .8fr; gap: 56px; align-items: center; padding-block: 38px; }
+.guide-kicker { color: #c9d8e4; font-size: .9rem; font-weight: 600; margin-bottom: 6px; }
+.guide-hero h1 { font-size: clamp(1.9rem, 3vw, 2.55rem); }
+.guide-lead { color: #e0e0e7; max-width: 660px; margin-top: 10px; }
+.guide-ready { display: grid; gap: 4px; padding: 18px 20px; border-left: 3px solid #64a7d5; background: #3d3d46; }
+.guide-ready strong { color: white; }
+.guide-ready span { color: #dedee5; font-size: .92rem; }
+.guide-heading { margin-bottom: 18px; }
+.guide-task-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.guide-task-card { min-height: 120px; display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 16px; padding: 22px 24px; color: var(--ink); text-decoration: none; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: white; }
+.guide-task-card:hover { background: var(--wash); color: var(--ink); }
+.guide-task-card strong, .guide-task-card small { display: block; }
+.guide-task-card strong { font-size: 1.08rem; }
+.guide-task-card small { color: var(--muted); margin-top: 4px; line-height: 1.55; }
+.guide-task-icon { width: 42px; height: 42px; display: grid; place-items: center; }
+.guide-task-icon img { width: 31px; height: 31px; object-fit: contain; }
+.guide-task-badge, .guide-token-mark { width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%; background: #e7f1f8; color: var(--blue); font-size: 1.12rem; font-weight: 700; }
+.guide-task-badge-help { background: #f0f0f2; color: #4e4e57; }
+.guide-arrow { color: var(--blue); font-size: 1.4rem; }
+.guide-library { background: var(--wash); border-block: 1px solid var(--line); padding-block: 34px 44px; }
+.guide-panel { scroll-margin-top: 94px; background: white; border: 1px solid var(--line); border-radius: 4px; padding: 26px 28px; margin-top: 18px; }
+.guide-panel-head { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding-bottom: 20px; border-bottom: 1px solid var(--line); }
+.guide-platform { display: flex; align-items: center; gap: 14px; }
+.guide-platform > img { width: 36px; height: 36px; object-fit: contain; }
+.guide-platform h3 { font-size: 1.28rem; }
+.guide-meta { color: var(--muted); font-size: .85rem; margin-bottom: 1px; }
+.guide-duration { font-size: .82rem; color: var(--muted); border: 1px solid var(--line); background: var(--wash); padding: 5px 9px; border-radius: 99px; white-space: nowrap; }
+.guide-flow { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; padding: 22px 0 0; margin: 0; counter-reset: guide-step; }
+.guide-flow li { display: grid; grid-template-columns: 34px 1fr; gap: 10px; padding: 0 22px; border-right: 1px solid var(--line); }
+.guide-flow li:first-child { padding-left: 0; }
+.guide-flow li:last-child { border-right: 0; padding-right: 0; }
+.guide-flow li > span { width: 28px; height: 28px; display: grid; place-items: center; border-radius: 50%; background: var(--blue); color: white; font-weight: 700; font-size: .86rem; }
+.guide-flow strong { display: block; }
+.guide-flow p { color: var(--muted); margin-top: 5px; font-size: .92rem; }
+.guide-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 18px; padding-top: 24px; }
+.guide-actions .text-link { padding-block: 4px; }
+.guide-footnote { color: var(--muted); border-top: 1px dashed var(--line); margin-top: 20px; padding-top: 14px; font-size: .86rem; }
+.guide-help { display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+.guide-help p:last-child { color: var(--muted); margin-top: 8px; }
+
+@media (max-width: 900px) {
+  .guide-hero-grid { grid-template-columns: 1fr; gap: 22px; }
+  .guide-flow { grid-template-columns: 1fr; gap: 0; }
+  .guide-flow li, .guide-flow li:first-child, .guide-flow li:last-child { padding: 16px 0; border-right: 0; border-bottom: 1px solid var(--line); }
+  .guide-flow li:last-child { border-bottom: 0; }
+}
+@media (max-width: 640px) {
+  .guide-hero-grid { padding-block: 28px; }
+  .guide-task-grid { grid-template-columns: 1fr; }
+  .guide-task-card { min-height: 104px; padding: 18px; }
+  .guide-panel { padding: 20px 18px; }
+  .guide-panel-head { align-items: start; flex-direction: column; gap: 12px; }
+  .guide-actions { align-items: stretch; flex-direction: column; }
+  .guide-actions .button { width: 100%; }
+  .guide-help { flex-direction: column; align-items: start; }
+}
+.guide-section-title { margin: 32px 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--line); font-size: 1.32rem; }
+.guide-image-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
+.guide-image-pair .figure { margin-top: 18px; }
+@media (max-width: 640px) { .guide-image-pair { grid-template-columns: 1fr; } }

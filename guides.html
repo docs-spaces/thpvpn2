@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>คู่มือการใช้งาน VPN | THP VPN</title>
+  <meta name="description" content="ศูนย์รวมคู่มือ THP VPN สำหรับ Windows, iPhone, iPad และ FortiToken เลือกหัวข้อที่ต้องการและทำตามขั้นตอนได้ง่าย ๆ">
+  <link rel="icon" href="images/apple-touch-icon.png" type="image/png">
+  <link rel="stylesheet" href="css/site.css">
+  <script src="js/index.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">ข้ามไปเนื้อหาหลัก</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html">
+        <img src="images/apple-touch-icon.png" width="38" height="38" alt="">
+        <span>THP VPN<small>คู่มือ THP VPN</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" hidden>เมนู <span aria-hidden="true">☰</span></button>
+      <nav class="primary-nav" id="primary-nav" aria-label="เมนูหลัก">
+        <a href="index.html#start">เริ่มใช้งาน</a>
+        <a href="index.html#alt-downloads">ดาวน์โหลด</a>
+        <a href="guides.html" aria-current="page">คู่มือ</a>
+        <a href="support.html">แก้ปัญหา</a>
+        <a href="#contact">ติดต่อเจ้าหน้าที่</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <section class="guide-hero">
+      <div class="container guide-hero-grid">
+        <div>
+          <p class="guide-kicker">คู่มือ THP VPN</p>
+          <h1>เลือกหัวข้อ</h1>
+          <p class="guide-lead">เลือกตามอุปกรณ์หรือปัญหาที่พบ</p>
+        </div>
+        <aside class="guide-ready" aria-label="สิ่งที่ควรเตรียมก่อนเริ่ม">
+          <strong>ก่อนเริ่ม</strong>
+          <span>เตรียม Internet, Username / Password และ Invitation Code</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section container" aria-labelledby="choose-task-title">
+      <div class="section-heading guide-heading">
+        <div>
+          <p class="eyebrow">เลือกตามงานที่ต้องการ</p>
+          <h2 id="choose-task-title">เลือกหัวข้อ</h2>
+        </div>
+        
+      </div>
+      <div class="guide-task-grid">
+        <a class="guide-task-card" href="#windows-guide">
+          <span class="guide-task-icon"><img src="images/windows-logo.png" width="32" height="32" alt=""></span>
+          <span><strong>ติดตั้ง Windows</strong><small>ติดตั้ง FortiClient → Sign in → ตรวจสอบ Connected</small></span>
+          <span class="guide-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="guide-task-card" href="#ios-guide">
+          <span class="guide-task-icon"><img src="images/apple-logo.svg" width="32" height="32" alt=""></span>
+          <span><strong>ติดตั้ง iPhone / iPad</strong><small>ตั้งค่า FortiClient ด้วย Invitation Code</small></span>
+          <span class="guide-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="guide-task-card" href="#token-guide">
+          <span class="guide-task-badge" aria-hidden="true">6</span>
+          <span><strong>ตั้งค่า FortiToken</strong><small>ลงทะเบียนด้วย QR Code หรือ Key</small></span>
+          <span class="guide-arrow" aria-hidden="true">→</span>
+        </a>
+        <a class="guide-task-card" href="support.html">
+          <span class="guide-task-badge guide-task-badge-help" aria-hidden="true">?</span>
+          <span><strong>เชื่อมต่อไม่ได้</strong><small>ตรวจ Connected, Invitation Code หรือ FortiToken</small></span>
+          <span class="guide-arrow" aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="guide-library" aria-labelledby="guide-library-title">
+      <div class="container">
+        <div class="section-heading guide-heading">
+          <div>
+            <p class="eyebrow">คู่มือตามอุปกรณ์</p>
+            <h2 id="guide-library-title">คู่มือตามอุปกรณ์</h2>
+          </div>
+          
+        </div>
+
+        <article class="guide-panel" id="windows-guide">
+          <div class="guide-panel-head">
+            <div class="guide-platform">
+              <img src="images/windows-logo.png" width="38" height="38" alt="">
+              <div><p class="guide-meta">Windows</p><h3>ติดตั้ง FortiClient ครั้งแรก</h3></div>
+            </div>
+          </div>
+          <ol class="guide-flow" aria-label="ขั้นตอนติดตั้งบน Windows">
+            <li><span>1</span><div><strong>ติดตั้ง FortiClient</strong><p>ดาวน์โหลดและติดตั้ง FortiClient</p></div></li>
+            <li><span>2</span><div><strong>Sign in หรือใส่ Invitation Code</strong><p>ใช้ข้อมูลจากเจ้าหน้าที่</p></div></li>
+            <li><span>3</span><div><strong>ตรวจสอบสถานะ Connected</strong><p>Zero Trust Telemetry ต้องเป็น Connected</p></div></li>
+          </ol>
+          <div class="guide-actions">
+            <a class="button button-primary" href="instrucwindows.html">เปิดคู่มือ Windows แบบทีละขั้น</a>
+            <a class="button button-outline" href="index.html#alt-downloads">ดาวน์โหลด FortiClient</a>
+          </div>
+        </article>
+
+        <article class="guide-panel" id="ios-guide">
+          <div class="guide-panel-head">
+            <div class="guide-platform">
+              <img src="images/apple-logo.svg" width="38" height="38" alt="">
+              <div><p class="guide-meta">iPhone / iPad</p><h3>ตั้งค่า FortiClient บน iOS</h3></div>
+            </div>
+          </div>
+          <ol class="guide-flow" aria-label="ขั้นตอนติดตั้งบน iPhone และ iPad">
+            <li><span>1</span><div><strong>เปิด FortiClient และกด Next</strong><p>กด Next แล้ว Connect</p></div></li>
+            <li><span>2</span><div><strong>เลือก Invitation Code</strong><p>กรอก Invitation Code จากเจ้าหน้าที่</p></div></li>
+            <li><span>3</span><div><strong>กรอก Username / Password</strong><p>กด Login</p></div></li>
+          </ol>
+          <div class="guide-actions">
+            <a class="button button-primary" href="instrucios.html">เปิดคู่มือ iPhone / iPad ฉบับเดิม<span class="sr-only"> (เปิดแท็บใหม่)</span></a>
+            <a class="text-link" href="#token-guide">ต่อไป: ตั้งค่า FortiToken →</a>
+          </div>
+        </article>
+
+        <article class="guide-panel" id="token-guide">
+          <div class="guide-panel-head">
+            <div class="guide-platform">
+              <span class="guide-token-mark" aria-hidden="true">6</span>
+              <div><p class="guide-meta">FortiToken</p><h3>ลงทะเบียน Token สำหรับยืนยันตัวตน</h3></div>
+            </div>
+          </div>
+          <ol class="guide-flow" aria-label="ขั้นตอนตั้งค่า FortiToken">
+            <li><span>1</span><div><strong>เปิดอีเมลจาก Fortinet</strong><p>เปิดอีเมล FTM Activation on FortiGate เพื่อดู Key หรือ QR Code</p></div></li>
+            <li><span>2</span><div><strong>เพิ่ม Token ในแอป FortiToken</strong><p>เลือก Scan Barcode หรือ Enter Manually</p></div></li>
+            <li><span>3</span><div><strong>ใช้ Token ตอนเชื่อมต่อ VPN</strong><p>กรอก Token 6 หลัก หรือกด Approve</p></div></li>
+          </ol>
+          <div class="guide-actions">
+            <a class="button button-primary" href="support.html#new-token">ดูวิธีตั้งค่า / ขอ FortiToken ใหม่</a>
+            <a class="text-link" href="https://drive.google.com/drive/folders/1BemTgVOzoAbQRNlOjLrfPfoh1gvj32aT" target="_blank" rel="noopener noreferrer">ดูคู่มือ PDF ทั้งหมด<span class="sr-only"> (เปิดแท็บใหม่)</span></a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section container guide-help" aria-labelledby="guide-help-title">
+      <div>
+        <p class="eyebrow">ดูวิธีแก้ปัญหา</p>
+        <h2 id="guide-help-title">มีปัญหา?</h2>
+        <p>Connected / Invitation Code / FortiToken</p>
+      </div>
+      <a class="button button-outline" href="support.html">เปิดหน้าแก้ปัญหา</a>
+    </section>
+  </main>
+
+  <footer class="contact-section" id="contact">
+    <div class="container contact-inner">
+      <div><h2>ยังใช้งานไม่ได้?</h2><p>ติดต่อเจ้าหน้าที่</p></div>
+      <div class="contact-actions">
+        <a class="button button-primary" href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a>
+        <p>โทร <a href="tel:028313406">0 2831 3406</a> หรือ <a href="tel:028313407">0 2831 3407</a></p>
+      </div>
+    </div>
+    <div class="container footer-note">THP VPN</div>
+  </footer>
+</body>
+</html>
