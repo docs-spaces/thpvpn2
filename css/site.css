@@ -207,6 +207,20 @@ body.dialog-open { overflow: hidden; }
   .more-links { flex-direction: column; gap: 4px; }
 }
 .guide-section-title { margin: 32px 0 20px; padding-bottom: 10px; border-bottom: 2px solid var(--line); font-size: 1.32rem; }
+.guide-demo { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; border-bottom: 1px solid var(--line); }
+.guide-demo-screen { position: relative; aspect-ratio: 16 / 9; margin-bottom: 84px; min-width: 0; }
+.guide-demo-screen iframe { position: absolute; inset: 0; width: 100%; height: calc(100% + 84px); border: 0; background: #000; }
+.guide-demo-copy h2 { font-size: 1.45rem; text-align: center; }
+.token-path { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+.token-path .button { flex-shrink: 0; }
+@media (max-width: 640px) { .token-path { flex-direction: column; align-items: start; gap: 16px; } }
+.guide-demo-copy > p { margin-top: 10px; color: var(--muted); }
+.guide-demo-copy .guide-demo-meta { font-size: .9rem; }
+.guide-demo-copy .guide-demo-caption { font-size: .8rem; margin-top: 6px; }
+@media (max-width: 900px) {
+  .guide-demo { grid-template-columns: 1fr; gap: 20px; }
+  .guide-demo-copy { grid-row: 1; }
+}
 .guide-image-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
 .guide-image-pair .figure { margin-top: 18px; }
 @media (max-width: 640px) { .guide-image-pair { grid-template-columns: 1fr; } }

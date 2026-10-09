@@ -25,6 +25,10 @@ html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Sa
 #titleBox{position:absolute;left:56px;top:88px;right:56px}
 #title1{font:700 44px/1.25 'Prompt',sans-serif;color:var(--navy)}
 #title2{font:500 28px/1.3 'Sarabun',sans-serif;color:var(--blue);margin-top:6px}
+#tokenReminder{background:#eaf3fd;visibility:hidden;opacity:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:28px;padding:120px;color:var(--navy)}
+#tokenReminder h2{font:700 62px/1.3 'Prompt',sans-serif}
+#tokenReminder p{font:500 44px/1.5 'Sarabun',sans-serif;max-width:1400px}
+#tokenReminder a{pointer-events:auto;display:inline-block;padding:18px 36px;background:var(--blue);color:#fff;border-radius:6px;font:600 44px 'Sarabun',sans-serif;text-decoration:none}
 .ok{color:var(--green)}
 .account-source{display:inline-block;padding:2px 14px;border-bottom:5px solid;white-space:nowrap}
 .account-source.admin{background:#fff0cc;color:#795000;border-color:#b87500}
@@ -122,6 +126,12 @@ body.started #big{display:none}
 #ctrl button:focus-visible,#seek:focus-visible,#big:focus-visible,#outro a:focus-visible{outline:3px solid #ffcc66;outline-offset:3px}
 #btn{width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;cursor:pointer}
 #btn svg{width:18px;height:18px}
+@media (max-width:360px){
+  #ctrl{padding:8px;gap:6px}
+  #ctrl .skip{min-width:36px;padding:0 6px;font-size:14px}
+  #btn{width:38px;height:38px}
+  #time{font-size:13px}
+}
 </style>
 </head>
 <body>
@@ -163,6 +173,12 @@ body.started #big{display:none}
     <div id="titleBox"><div id="title1"></div><div id="title2"></div></div>
   </div>
 
+  <div id="tokenReminder" class="layer">
+    <h2>ก่อนเริ่มเชื่อมต่อ VPN</h2>
+    <p>หากยังไม่มี FortiToken<br>ให้ดำเนินการตามคู่มือ “ตั้งค่า FortiToken”<br>ให้เรียบร้อยก่อน</p>
+    <a href="instrucios.html#fortitoken" target="_top">ตั้งค่า FortiToken →</a>
+  </div>
+
   <div id="intro" class="layer">
     <div class="intro-text" id="introText">
       <div class="kicker">IT GUIDE · WINDOWS</div>
@@ -197,13 +213,15 @@ body.started #big{display:none}
   <div class="lbl" id="bigLbl">ดูวิดีโอ (1:26 นาที)</div>
 </button>
 <div id="ctrl" role="group" aria-label="ควบคุมคู่มือแอนิเมชัน">
-  <input id="seek" type="range" min="0" max="92" step="0.1" value="0" aria-label="เลื่อนเวลาคลิป">
+  <input id="seek" type="range" min="0" max="102" step="0.1" value="0" aria-label="เลื่อนเวลาคลิป">
   <button id="btn" type="button" aria-label="เล่น"></button>
   <button id="back" class="skip" type="button" aria-label="ย้อนกลับ 5 วินาที">−5 วิ</button>
   <button id="forward" class="skip" type="button" aria-label="เดินหน้า 5 วินาที">+5 วิ</button>
-  <output id="time" aria-label="เวลาปัจจุบันและเวลารวม">0:00 / 1:32</output>
+  <button id="fullscreen" class="skip" type="button" aria-label="ดูเต็มจอ" hidden>⛶</button>
+  <output id="time" aria-label="เวลาปัจจุบันและเวลารวม">0:00 / 1:42</output>
 </div>
 
+<script src="js/narration-timeline.js"></script>
 <script>
 /* ============ ตั้งค่า ============ */
 const IMAGES = {
@@ -241,7 +259,7 @@ const PRIVACY = {
 const PRIVACY_BLUR = 9;
 
 const SAMPLE = { adminUsername:'setup_user', hrisUsername:'employee01', invitation:'ABCD-1234-EFGH', pwLen:10, otp:'123456' };
-const VOICE_RATE = 1.0, MUSIC_VOLUME = 0.6, DURATION = 92, POSTER_T = 2.5;
+const MUSIC_VOLUME = 0.6, DURATION = NARRATION_TIMELINE[NARRATION_TIMELINE.length-1][1], POSTER_T = 2.5;
 
 /* ============ Helpers ============ */
 const $ = id => document.getElementById(id);
@@ -343,13 +361,14 @@ const TITLES = [
   { t0:72.6, t1:80.8, text:'VPN Connected <span class="ok">✓</span>', sub:'เชื่อมต่อ VPN สำเร็จ พร้อมใช้งาน', s0:75.3 },
 ];
 const SUBS = [
-  { t0:0.4,  t1:3.9,  text:'มาดูวิธีตั้งค่าและเชื่อมต่อ FortiClient VPN บน Windows แบบง่าย ๆ กันครับ' },
+  { t0:0.4,  t1:3.9,  text:'มาดูวิธีตั้งค่าและเชื่อมต่อ FortiClient VPN กันครับ' },
   { t0:4.3,  t1:11.6, text:'หลังติดตั้ง FortiClient ให้กรอก Username และ Password ที่ได้รับจากแอดมิน' },
   { t0:11.6, t1:14.8, text:'จากนั้นกด Sign in' },
   { t0:15.3, t1:20.0, text:'หากหน้าต่าง Sign in ไม่ปรากฏ ให้เปิด FortiClient แล้วกรอก Invitation Code ที่ได้รับจากแอดมิน' },
   { t0:20.0, t1:22.0, text:'กด Connect' },
   { t0:22.0, t1:28.8, text:'จากนั้นกรอก Username และ Password ที่ได้รับจากแอดมิน แล้วกด Sign in' },
   { t0:29.3, t1:36.5, text:'เมื่อตั้งค่าสำเร็จ สถานะในหน้า Zero Trust Telemetry จะแสดง Connected' },
+  { t0:36.6, t1:37.9, text:'หากยังไม่มี FortiToken ให้ดำเนินการตามคู่มือ “ตั้งค่า FortiToken” ให้เรียบร้อยก่อน' },
   { t0:38.3, t1:42.5, text:'เมื่อต้องการเชื่อมต่อ VPN ให้เลือก Remote Access' },
   { t0:42.5, t1:46.7, text:'ตรวจสอบ VPN Name เป็น THP_VPN', say:'ตรวจสอบ VPN Name เป็น T H P VPN' },
   { t0:46.7, t1:51.3, text:'จากนั้นกรอก Username และ Password เดียวกับระบบ HRIS', say:'จากนั้นกรอก Username และ Password เดียวกับระบบ H R I S' },
@@ -568,20 +587,20 @@ function renderSubs(t){
 }
 
 /* ============ เสียงพากย์ + ดนตรี ============ */
-let thVoice=null;
-function loadVoices(){
-  if(!('speechSynthesis' in window)) return;
-  const vs=speechSynthesis.getVoices().filter(v=>/^th/i.test(v.lang));
-  thVoice=vs.find(v=>/Premwadee|Niwat|Natural|Online/i.test(v.name)) || vs[0] || null;
-}
-if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=loadVoices; loadVoices(); }
-function speak(text){
-  if(!('speechSynthesis' in window)) return;
-  const u=new SpeechSynthesisUtterance(text);
-  u.lang='th-TH'; if(thVoice) u.voice=thVoice; u.rate=VOICE_RATE;
-  speechSynthesis.speak(u);
-}
-function stopSpeech(){ if('speechSynthesis' in window) speechSynthesis.cancel(); }
+const narration=new Audio();
+narration.preload='auto';
+// โหลดเป็น Blob เพื่อให้เลื่อนเสียงได้ แม้เซิร์ฟเวอร์ไม่รองรับ Range requests
+fetch('audio/vpn-guide-th.mp3?v=3').then(response=>{
+  if(!response.ok) throw new Error('Unable to load narration');
+  return response.blob();
+}).then(blob=>{
+  narration.src=URL.createObjectURL(blob);
+  narration.load();
+}).catch(()=>{});
+narration.addEventListener('canplay',()=>{
+  if(playing && narration.paused) narrateCurrent();
+});
+function stopSpeech(){ narration.pause(); }
 
 const Music={ ctx:null, timer:null, next:0, step:0,
   init(){
@@ -628,8 +647,8 @@ const Music={ ctx:null, timer:null, next:0, step:0,
 };
 let lastLevel=-1;
 function updateMusic(t){
-  const speaking='speechSynthesis' in window && speechSynthesis.speaking;
-  const v=MUSIC_VOLUME*(speaking?.5:1)*(1-ramp(t,90,DURATION));
+  const speaking=playing && SUBS.some(x=>t>=x.t0&&t<x.t1);
+  const v=MUSIC_VOLUME*(speaking?.5:1)*(1-ramp(t,90,92));
   if(Math.abs(v-lastLevel)>.01){ Music.level(v); lastLevel=v; }
 }
 
@@ -658,12 +677,12 @@ function setUI(){
   btn.setAttribute('aria-label',playing?'หยุด':'เล่น');
   body.classList.toggle('playing',playing);
   body.classList.toggle('started',started);
-  $('bigLbl').textContent = 'ดูคู่มือ (1:32 นาที)';
+  $('bigLbl').textContent = 'ดูคู่มือ ('+formatTime(DURATION)+' นาที)';
   btn.setAttribute('aria-label',ended?'เล่นอีกครั้ง':playing?'หยุดชั่วคราว':'เล่น');
 }
 function play(){
-  if(!started || ended){ started=true; ended=false; t=0; loadVoices(); }
-  playing=true; last=performance.now(); Music.start(); setUI(); poke();
+  if(!started || ended){ started=true; ended=false; t=0; }
+  playing=true; last=performance.now(); narrateCurrent(); Music.start(); setUI(); poke();
 }
 function pause(){ if(!playing) return; playing=false; stopSpeech(); Music.pause(); setUI(); }
 function toggle(){ playing?pause():play(); }
@@ -682,27 +701,40 @@ function updateProgress(){
   $('time').textContent=formatTime(current)+' / '+formatTime(DURATION);
 }
 function narrateCurrent(){
-  const current=SUBS.find(x=>t>=x.t0&&t<x.t1);
-  if(current && playing) speak(current.say||current.text);
+  if(!playing) return;
+  narration.currentTime=t;
+  narration.play().catch(()=>{});
 }
 function seekTo(value,narrate=true){
   stopSpeech(); started=true; ended=false;
   t=clamp(Number(value),0,DURATION); last=performance.now();
+  narration.currentTime=t;
   if(t>=DURATION) finish();
   else { setUI(); if(narrate) narrateCurrent(); }
   render();
 }
 
+// จับคู่เวลาจริงกับเวลาภาพเดิม โดยยืดฉากให้พอดีกับเสียงความเร็วปกติ
+function visualTime(realTime){
+  for(let i=1;i<NARRATION_TIMELINE.length;i++){
+    const a=NARRATION_TIMELINE[i-1], b=NARRATION_TIMELINE[i];
+    if(realTime<=b[1]) return a[0]+(b[0]-a[0])*clamp((realTime-a[1])/(b[1]-a[1]));
+  }
+  return 92;
+}
 function render(){
-  $('fade').style.opacity=started ? 1-ramp(t,0,.7) : 0;
-  renderIntro(t); SEGMENTS.forEach(s=>renderSeg(s,t)); renderToken(t); renderTop(t); renderOutro(t); renderSubs(t);
-  updateMusic(t);
+  const v=visualTime(t);
+  $('fade').style.opacity=started ? 1-ramp(v,0,.7) : 0;
+  renderIntro(v); SEGMENTS.forEach(s=>renderSeg(s,v)); renderToken(v); renderTop(v); renderOutro(v); renderSubs(v);
+  const reminder=$('tokenReminder'), reminderOn=v>=36.6&&v<38;
+  reminder.style.visibility=reminderOn?'visible':'hidden';
+  reminder.style.opacity=reminderOn?1:0;
+  updateMusic(v);
   updateProgress();
 }
 function tick(now){
   if(playing){
-    const prev=t; t=Math.min(DURATION, t+Math.min(now-last,250)/1000); last=now;
-    SUBS.forEach(x=>{ if(x.t0>prev && x.t0<=t) speak(x.say||x.text); });
+    t=Math.min(DURATION, !narration.paused && narration.readyState>=2 ? narration.currentTime : t+Math.min(now-last,250)/1000); last=now;
     if(t>=DURATION) finish();
   }
   render(); requestAnimationFrame(tick);
@@ -711,8 +743,21 @@ function tick(now){
 btn.addEventListener('click',e=>{ e.stopPropagation(); toggle(); });
 $('big').addEventListener('click',toggle);
 stage.addEventListener('click',e=>{ if(!e.target.closest('a,button,input')) toggle(); });
+$('tokenReminder').querySelector('a').addEventListener('click',pause);
 $('back').addEventListener('click',()=>seekTo((started?t:0)-5));
 $('forward').addEventListener('click',()=>seekTo((started?t:0)+5));
+const fullscreen=$('fullscreen');
+fullscreen.hidden=!document.fullscreenEnabled;
+fullscreen.addEventListener('click',async()=>{
+  try {
+    if(document.fullscreenElement) await document.exitFullscreen();
+    else await document.documentElement.requestFullscreen();
+  } catch { /* หากอุปกรณ์ไม่รองรับ ยังดูในหน้าเดิมได้ */ }
+});
+document.addEventListener('fullscreenchange',()=>{
+  fullscreen.setAttribute('aria-label',document.fullscreenElement?'ออกจากเต็มจอ':'ดูเต็มจอ');
+  fit();
+});
 seek.addEventListener('pointerdown',()=>{
   scrubbing=true; pointerInteraction=true; resumeAfterScrub=playing; pause();
 });
@@ -744,6 +789,7 @@ addEventListener('touchstart',poke,{passive:true});
 
 // หยุดอัตโนมัติเมื่อสลับแท็บ หรือเลื่อนหน้าจนวิดีโอพ้นจอ
 document.addEventListener('visibilitychange',()=>{ if(document.hidden) pause(); });
+narration.addEventListener('ended',()=>{ if(playing) finish(); });
 if('IntersectionObserver' in window){
   new IntersectionObserver(es=>{ if(!es[0].isIntersecting) pause(); },{threshold:.25}).observe(document.documentElement);
 }
