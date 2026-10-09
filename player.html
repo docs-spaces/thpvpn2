@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>คู่มือ FortiClient VPN บน Windows</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Prompt:wght@500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0b2e59;--blue:#1565c0;--blue2:#1e88e5;--sky:#e8f1fb;--grey:#5b6b7f;--green:#1faa59;--amber:#f59e0b}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{width:100%;height:100%;overflow:hidden;background:#000;font-family:'Sarabun','Leelawadee UI',Tahoma,sans-serif;user-select:none;-webkit-tap-highlight-color:transparent}
+#viewport{position:fixed;inset:0 0 84px;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;background:linear-gradient(160deg,#f5f8fc 0%,#e2ebf6 100%)}
+#stage::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(21,101,192,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(21,101,192,.05) 1px,transparent 1px);background-size:48px 48px}
+.layer{position:absolute;inset:0;pointer-events:none}
+
+/* หัวเรื่อง */
+#chipRow{position:absolute;left:56px;top:34px;display:flex;gap:14px;align-items:center}
+.chip{font:600 22px 'Prompt',sans-serif;padding:8px 20px;border-radius:999px;background:var(--navy);color:#fff;white-space:nowrap}
+.chip.alt{background:#fff4e0;color:#9a5b00;border:2px solid var(--amber)}
+.chip.okc{background:#e7f7ee;color:#137a3e;border:2px solid var(--green)}
+.chip.note{background:#eef2f7;color:#5b6b7f;border:2px solid #c5d3e4}
+.chip.m{background:#e3f0fd;color:var(--blue);border:2px solid var(--blue2)}
+#titleBox{position:absolute;left:56px;top:88px;right:56px}
+#title1{font:700 44px/1.25 'Prompt',sans-serif;color:var(--navy)}
+#title2{font:500 28px/1.3 'Sarabun',sans-serif;color:var(--blue);margin-top:6px}
+.ok{color:var(--green)}
+.account-source{display:inline-block;padding:2px 14px;border-bottom:5px solid;white-space:nowrap}
+.account-source.admin{background:#fff0cc;color:#795000;border-color:#b87500}
+.account-source.hris{background:#ddf4f4;color:#006368;border-color:#00858b}
+.tag.admin{background:#795000;color:#fff}
+.tag.hris{background:#006368;color:#fff}
+
+/* Screenshot */
+.frame{position:absolute;border-radius:14px;overflow:hidden;background:#fff;box-shadow:0 28px 70px rgba(11,46,89,.22),0 0 0 1px rgba(11,46,89,.1);visibility:hidden;opacity:0}
+.cam{position:absolute;left:0;top:0;transform-origin:0 0;will-change:transform}
+.cam>img{position:absolute;left:0;top:0;width:100%;height:100%;display:block}
+.priv{position:absolute;overflow:hidden;border-radius:4px}
+.priv img{position:absolute;max-width:none;display:block}
+.hl{position:absolute;border-style:solid;border-color:var(--blue2);border-radius:10px;opacity:0}
+.hl.green{border-color:var(--green)}
+.typed{position:absolute;display:none;align-items:center;white-space:nowrap;overflow:hidden;color:#1d2733;font-family:'Segoe UI',Tahoma,sans-serif;background:#fff;border-radius:2px;padding-left:.35em}
+.typed .caret{display:inline-block;width:.08em;min-width:1px;height:1.1em;background:#1d2733;margin-left:.06em}
+.tag{position:absolute;display:none;background:var(--amber);color:#fff;font-family:'Sarabun';font-weight:600;border-radius:6px;padding:.1em .5em;white-space:nowrap}
+.cursor{position:absolute;left:0;top:0;width:44px;height:44px;transform-origin:0 0;opacity:0;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.cursor svg{display:block;margin:-4px 0 0 -5px}
+.ripple{position:absolute;left:0;top:0;width:80px;height:80px;margin:-40px 0 0 -40px;border-radius:50%;border:5px solid var(--blue2);background:rgba(30,136,229,.18);opacity:0}
+.badge{position:absolute;left:0;top:0;width:76px;height:76px;transform-origin:0 0;opacity:0}
+.badge .disc{position:absolute;inset:0;border-radius:50%;background:var(--green);box-shadow:0 6px 18px rgba(31,170,89,.45);display:flex;align-items:center;justify-content:center}
+.badge .ring{position:absolute;inset:0;border-radius:50%;border:4px solid var(--green);opacity:0}
+.badge .dot{position:absolute;left:50%;top:50%;width:12px;height:12px;margin:-6px;border-radius:50%;background:var(--green);opacity:0}
+
+/* Intro */
+#intro{background:linear-gradient(135deg,#eaf3fd 0%,#cfe3f8 100%)}
+.intro-text{position:absolute;left:120px;top:330px;width:840px}
+.kicker{font:600 26px 'Prompt';color:var(--blue);letter-spacing:2px}
+.intro-text h1{font:700 64px/1.25 'Prompt';color:var(--navy);margin-top:18px}
+.intro-text h1 span{color:var(--blue)}
+.intro-text .bar{width:120px;height:6px;background:var(--blue2);border-radius:3px;margin-top:28px}
+.monitor{position:absolute;left:1010px;top:250px;width:800px}
+.monitor .screen{height:470px;background:#0d1b2e;border-radius:18px;padding:16px;box-shadow:0 30px 60px rgba(11,46,89,.3)}
+.monitor .inner{position:relative;width:100%;height:100%;border-radius:6px;overflow:hidden;background:linear-gradient(160deg,#dbe9f8,#b9d3ef)}
+.ipic{position:absolute;left:0;top:0;right:0;bottom:34px;overflow:hidden}
+.monitor .taskbar{position:absolute;left:0;right:0;bottom:0;height:34px;background:rgba(232,238,246,.97);display:flex;align-items:center;justify-content:center}
+.monitor .neck{width:120px;height:70px;margin:0 auto;background:linear-gradient(#b8c6d8,#9fb0c6)}
+.monitor .foot{width:300px;height:16px;margin:0 auto;background:#9fb0c6;border-radius:8px}
+
+/* Scene 06 วิธีที่ 1 (ภาพประกอบ) */
+#token{visibility:hidden;opacity:0}
+.tk-pc{position:absolute;left:220px;top:250px;width:720px}
+.tk-screen{height:450px;background:#0d1b2e;border-radius:16px;padding:14px;box-shadow:0 24px 50px rgba(11,46,89,.25)}
+.tk-screen .in{position:relative;height:100%;border-radius:6px;background:linear-gradient(160deg,#f4f8fd,#e3edf8);display:flex;align-items:center;justify-content:center}
+.tk-pclabel{position:absolute;left:22px;top:16px;font:600 18px 'Sarabun';color:var(--grey)}
+.tk-card{position:relative;width:480px;background:#fff;border-radius:16px;box-shadow:0 12px 30px rgba(11,46,89,.15);padding:30px;text-align:center}
+.tk-lock{width:64px;height:64px;margin:0 auto 12px;border-radius:50%;background:var(--sky);display:flex;align-items:center;justify-content:center}
+.tk-cap{font:600 26px 'Prompt';color:var(--navy);margin-bottom:18px}
+.tk-digits{display:flex;gap:10px;justify-content:center}
+.tk-digits div{width:52px;height:64px;border:2px solid #c5d3e4;border-radius:10px;font:700 34px/60px Consolas,monospace;color:var(--navy)}
+.tk-digits div.f{border-color:var(--blue2);background:#f0f7ff}
+.tk-ok{position:absolute;inset:0;border-radius:16px;background:rgba(255,255,255,.97);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font:600 30px 'Prompt';color:var(--green);opacity:0}
+.tk-ok .c{width:70px;height:70px;border-radius:50%;background:var(--green);display:flex;align-items:center;justify-content:center}
+.tk-neck{width:110px;height:56px;margin:0 auto;background:linear-gradient(#b8c6d8,#9fb0c6)}
+.tk-foot{width:280px;height:14px;margin:0 auto;background:#9fb0c6;border-radius:7px}
+.tk-arrow{position:absolute;left:975px;top:470px;width:230px;text-align:center;font:600 22px 'Sarabun';color:var(--blue);opacity:0}
+#m1{position:absolute;left:1240px;top:212px;width:340px;text-align:center}
+.tk-ml{font:600 24px 'Prompt';color:var(--navy);margin-bottom:14px;background:#fff;border-radius:999px;padding:8px 0;box-shadow:0 4px 12px rgba(11,46,89,.1)}
+.phone{width:300px;height:610px;margin:0 auto;background:#0d1b2e;border-radius:44px;padding:12px;box-shadow:0 24px 50px rgba(11,46,89,.28);transition:box-shadow .3s}
+.phone.on{box-shadow:0 0 0 6px rgba(30,136,229,.65),0 24px 50px rgba(11,46,89,.28)}
+.scr{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:#f4f7fb;display:flex;flex-direction:column;align-items:center}
+.app-h{width:100%;background:var(--blue);color:#fff;font:600 24px 'Prompt';padding:46px 0 16px;text-align:center}
+.app-acc{margin-top:120px;font-size:20px;color:var(--grey)}
+.app-code{font:700 54px Consolas,monospace;color:var(--navy);letter-spacing:4px;margin-top:10px;opacity:0}
+.app-bar{width:200px;height:8px;background:#dbe5f1;border-radius:4px;margin-top:22px;overflow:hidden}
+.app-bar i{display:block;height:100%;background:var(--blue2)}
+.app-hint{margin-top:16px;font-size:16px;color:var(--grey)}
+
+/* Outro */
+#outro{background:radial-gradient(circle at 50% 40%,#1e6fd0 0%,#0b2e59 72%);opacity:0;visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;padding-bottom:90px}
+#outro h1{font:700 76px 'Prompt';margin-top:28px}
+#outro .o1{font:500 40px 'Sarabun';margin-top:8px;color:#dbe9fb}
+#outro .o2{font:400 28px 'Sarabun';margin-top:34px;color:#bcd5f2;padding:10px 28px;border:2px solid rgba(255,255,255,.3);border-radius:999px}
+#outro .o2 a{display:block;margin-top:6px;color:#fff;font-size:42px;font-weight:700;text-decoration:underline;text-underline-offset:8px;pointer-events:auto}
+
+/* ซับไตเติล / Fade */
+#subs{position:absolute;left:0;right:0;bottom:30px;text-align:center;pointer-events:none;opacity:0}
+#subs span{display:inline-block;max-width:1700px;background:rgba(6,18,38,.85);color:#fff;font:500 36px/1.4 'Sarabun',sans-serif;padding:.28em .8em;border-radius:12px}
+#fade{background:#000;opacity:0}
+
+/* ปุ่มเล่น/หยุด */
+#big{position:fixed;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;background:rgba(5,15,35,.35);cursor:pointer}
+#big{width:100%;border:0}
+#big .circle{width:clamp(56px,13vmin,112px);height:clamp(56px,13vmin,112px);border-radius:50%;background:rgba(21,101,192,.94);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(0,0,0,.35);transition:transform .2s}
+#big:hover .circle{transform:scale(1.07)}
+#big .circle svg{width:42%;height:42%;margin-left:6%}
+#big .lbl{color:#fff;font:600 clamp(13px,2.8vmin,22px) 'Prompt',sans-serif;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+body.started #big{display:none}
+#ctrl{position:fixed;left:0;right:0;bottom:0;z-index:10;height:84px;padding:8px 16px;background:#101b2a;color:#fff;display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center}
+#seek{flex-basis:100%;width:100%;height:20px;accent-color:#58b2ff;cursor:pointer}
+#ctrl .skip{height:38px;min-width:48px;padding:0 10px;border:1px solid #7890a9;border-radius:6px;background:transparent;color:#fff;font:600 15px 'Sarabun',sans-serif;cursor:pointer}
+#time{font:15px/1.4 'Sarabun',sans-serif;font-variant-numeric:tabular-nums;margin-left:auto;white-space:nowrap}
+#ctrl button:focus-visible,#seek:focus-visible,#big:focus-visible,#outro a:focus-visible{outline:3px solid #ffcc66;outline-offset:3px}
+#btn{width:42px;height:42px;border:0;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;cursor:pointer}
+#btn svg{width:18px;height:18px}
+</style>
+</head>
+<body>
+
+<div id="viewport"><div id="stage">
+  <div id="shots" class="layer"></div>
+
+  <div id="token" class="layer">
+    <div class="tk-pc" id="tkPc">
+      <div class="tk-screen"><div class="in">
+        <div class="tk-pclabel">คอมพิวเตอร์ (ภาพประกอบ)</div>
+        <div class="tk-card">
+          <div class="tk-lock"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="#1565c0" stroke-width="2"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div>
+          <div class="tk-cap">กรอกรหัส FortiToken</div>
+          <div class="tk-digits" id="tkDigits"></div>
+          <div class="tk-ok" id="tkOk"><div class="c"><svg viewBox="0 0 24 24" width="44" height="44" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>ยืนยันตัวตนสำเร็จ</div>
+        </div>
+      </div></div>
+      <div class="tk-neck"></div><div class="tk-foot"></div>
+    </div>
+    <div class="tk-arrow" id="tkArrow">
+      <svg viewBox="0 0 230 40" width="230" height="40"><path d="M220 20 H20" stroke="#1e88e5" stroke-width="5" stroke-dasharray="10 8" stroke-linecap="round"/><path d="M32 6 L14 20 L32 34" fill="none" stroke="#1e88e5" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <div>นำรหัสจากแอปมากรอก</div>
+    </div>
+    <div id="m1">
+      <div class="tk-ml">แอป FortiToken (ภาพประกอบ)</div>
+      <div class="phone" id="tkPhone"><div class="scr">
+        <div class="app-h">FortiToken</div>
+        <div class="app-acc">บัญชี VPN (ตัวอย่าง)</div>
+        <div class="app-code" id="tkCode">123 456</div>
+        <div class="app-bar"><i id="tkBar"></i></div>
+        <div class="app-hint">รหัสตัวอย่าง ไม่ใช่รหัสจริง</div>
+      </div></div>
+    </div>
+  </div>
+
+  <div id="top" class="layer">
+    <div id="chipRow"><div id="chip" class="chip"></div></div>
+    <div id="titleBox"><div id="title1"></div><div id="title2"></div></div>
+  </div>
+
+  <div id="intro" class="layer">
+    <div class="intro-text" id="introText">
+      <div class="kicker">IT GUIDE · WINDOWS</div>
+      <h1>คู่มือการตั้งค่าและใช้งาน<br><span>FortiClient VPN</span> บน Windows</h1>
+      <div class="bar"></div>
+    </div>
+    <div class="monitor" id="monitor">
+      <div class="screen"><div class="inner">
+        <div class="ipic" id="introPic"></div>
+        <div class="taskbar"><svg viewBox="0 0 20 20" width="18" height="18"><rect x="1" y="1" width="8" height="8" fill="#1e88e5"/><rect x="11" y="1" width="8" height="8" fill="#1e88e5"/><rect x="1" y="11" width="8" height="8" fill="#1e88e5"/><rect x="11" y="11" width="8" height="8" fill="#1e88e5"/></svg></div>
+      </div></div>
+      <div class="neck"></div><div class="foot"></div>
+    </div>
+  </div>
+
+  <div id="outro" class="layer">
+    <svg id="shield" viewBox="0 0 200 240" width="190" height="228">
+      <path d="M100 12 L178 42 V112 C178 166 144 204 100 226 C56 204 22 166 22 112 V42 Z" fill="rgba(255,255,255,.12)" stroke="#fff" stroke-width="8" stroke-linejoin="round"/>
+      <path id="oCheck" d="M64 122 L91 149 L140 94" fill="none" stroke="#4ade80" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" pathLength="1" stroke-dasharray="1" stroke-dashoffset="1"/>
+    </svg>
+    <h1 class="o0">FortiClient VPN</h1>
+    <p class="o1">ตั้งค่าง่าย เชื่อมต่อได้อย่างมั่นใจ</p>
+    <p class="o2">ติดต่อสอบถาม · LINE Official<a href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">@961ugpvt</a></p>
+  </div>
+
+  <div id="subs"><span></span></div>
+  <div id="fade" class="layer"></div>
+</div></div>
+
+<button id="big" type="button" aria-label="เล่นวิดีโอ">
+  <div class="circle"><svg viewBox="0 0 24 24"><path d="M6 3.5v17L20 12z" fill="#fff"/></svg></div>
+  <div class="lbl" id="bigLbl">ดูวิดีโอ (1:26 นาที)</div>
+</button>
+<div id="ctrl" role="group" aria-label="ควบคุมคู่มือแอนิเมชัน">
+  <input id="seek" type="range" min="0" max="92" step="0.1" value="0" aria-label="เลื่อนเวลาคลิป">
+  <button id="btn" type="button" aria-label="เล่น"></button>
+  <button id="back" class="skip" type="button" aria-label="ย้อนกลับ 5 วินาที">−5 วิ</button>
+  <button id="forward" class="skip" type="button" aria-label="เดินหน้า 5 วินาที">+5 วิ</button>
+  <output id="time" aria-label="เวลาปัจจุบันและเวลารวม">0:00 / 1:32</output>
+</div>
+
+<script>
+/* ============ ตั้งค่า ============ */
+const IMAGES = {
+  shot1: 'images/shot1-signin.png',
+  shot2: 'images/shot2-invitation-code.png',
+  shot3: 'images/shot1-signin.png',
+  shot4: 'images/shot4-ztna-connected.png',
+  shot5: 'images/shot5-remote-access.png',
+  token: 'images/shot7-fortitoken-approve.png',
+  shot6: 'images/shot6-vpn-connected.png',
+};
+const INTRO_SHOT = 'shot5';
+
+const SIGNIN = { user:[.4917,.4398,.1073,.0259], pass:[.4917,.4963,.1073,.0250], signin:[.4359,.5519,.0625,.0333] };
+const HOT = {
+  shot1: SIGNIN,
+  shot2: { invite:[.3630,.3329,.2991,.0286], connect:[.6632,.3314,.0628,.0314] },
+  shot3: SIGNIN,
+  shot4: { connected:[.2975,.2299,.3604,.0675] },
+  shot5: { menu:[.0023,.3577,.2517,.0486], vpnName:[.5263,.5021,.2860,.0429], user:[.5286,.5508,.2860,.0386], pass:[.5286,.5951,.2860,.0386], connect:[.5698,.6838,.1098,.0401] },
+  token: { dialog:[.3362,.6875,.3256,.2917], approve:[.5011,.9144,.1607,.0648] },
+  shot6: { status:[.2849,.0746,.1781,.0448] },
+};
+
+const SIGNIN_PRIV = [[.2552,.2593,.0677,.0278]];
+const PRIVACY = {
+  shot1: SIGNIN_PRIV,
+  shot2: [[.0845,.2371,.0982,.0343]],
+  shot3: SIGNIN_PRIV,
+  shot4: [[.0698,.2299,.1144,.0316]],
+  shot5: [[.0698,.2346,.1144,.0315]],
+  token: [[.0042,.1435,.1607,.0301],[.5159,.7454,.1353,.0926]],
+  shot6: [],
+};
+const PRIVACY_BLUR = 9;
+
+const SAMPLE = { adminUsername:'setup_user', hrisUsername:'employee01', invitation:'ABCD-1234-EFGH', pwLen:10, otp:'123456' };
+const VOICE_RATE = 1.0, MUSIC_VOLUME = 0.6, DURATION = 92, POSTER_T = 2.5;
+
+/* ============ Helpers ============ */
+const $ = id => document.getElementById(id);
+const clamp = (v,a=0,b=1) => Math.min(b, Math.max(a, v));
+const ramp = (t,a,b) => clamp((t-a)/(b-a));
+const ease = x => x<.5 ? 4*x*x*x : 1-Math.pow(-2*x+2,3)/2;
+const easeOutBack = x => { const c1=1.70158, c3=c1+1; return 1+c3*Math.pow(x-1,3)+c1*Math.pow(x-1,2); };
+const win = (t,a,b,f=.35) => ramp(t,a,a+f) * (1-ramp(t,b-f,b));
+const U = (...rs) => { const x0=Math.min(...rs.map(r=>r[0])), y0=Math.min(...rs.map(r=>r[1])),
+  x1=Math.max(...rs.map(r=>r[0]+r[2])), y1=Math.max(...rs.map(r=>r[1]+r[3])); return [x0,y0,x1-x0,y1-y0]; };
+const at = (r,fx=.5,fy=.5) => [r[0]+r[2]*fx, r[1]+r[3]*fy];
+const focus = (r,maxZ=2) => r ? { cx:r[0]+r[2]/2, cy:r[1]+r[3]/2, z:clamp(Math.min(.62/r[2], .5/r[3]), 1, maxZ) } : { cx:.5, cy:.5, z:1 };
+const mk = (cls,parent,html='') => { const d=document.createElement('div'); if(cls) d.className=cls; if(html) d.innerHTML=html; parent.appendChild(d); return d; };
+
+function place(el,r,s,pad=0){
+  el.style.left=(r[0]*s.W-pad)+'px'; el.style.top=(r[1]*s.H-pad)+'px';
+  el.style.width=(r[2]*s.W+2*pad)+'px'; el.style.height=(r[3]*s.H+2*pad)+'px';
+}
+function makePriv(cam,key){
+  return (PRIVACY[key]||[]).map(r=>{
+    const d=mk('priv',cam); d._r=r;
+    d.img=document.createElement('img'); d.img.alt=''; d.img.style.filter=`blur(${PRIVACY_BLUR}px)`;
+    d.img.src=IMAGES[key]; d.appendChild(d.img); return d;
+  });
+}
+function layoutPriv(d,s){
+  place(d,d._r,s);
+  Object.assign(d.img.style,{ width:s.W+'px', height:s.H+'px', left:(-d._r[0]*s.W)+'px', top:(-d._r[1]*s.H)+'px' });
+}
+
+/* ============ Timeline ============ */
+const H1=HOT.shot1, H2=HOT.shot2, H3=HOT.shot3, H4=HOT.shot4, H5=HOT.shot5, H6=HOT.shot6, HT=HOT.token;
+const F1=U(H1.user,H1.pass,H1.signin), F2=U(H2.invite,H2.connect), F3=U(H3.user,H3.pass,H3.signin), F5=U(H5.vpnName,H5.user,H5.pass,H5.connect);
+
+const SEGMENTS = [
+  { shot:'shot1', t0:4, t1:15,
+    camera:[[4,null],[5,null],[6.3,F1,2.2],[13.8,F1,2.2],[14.9,null]],
+    cursor:[[6.0,.62,.72],[7.0,...at(H1.user,.2)],[9.4,...at(H1.user,.2)],[9.9,...at(H1.pass,.2)],[11.8,...at(H1.pass,.2)],[12.4,...at(H1.signin)],[15.5,...at(H1.signin)]],
+    clicks:[7.2,10.05,12.7],
+    hl:[[7.0,9.5,H1.user,'admin'],[9.6,11.9,H1.pass,'admin'],[12.1,13.9,H1.signin]],
+    typing:[{t0:7.5,t1:8.9,r:H1.user,text:SAMPLE.adminUsername,tag:'จากแอดมิน · ตัวอย่าง',account:'admin'},{t0:10.25,t1:11.4,r:H1.pass,mask:true,tag:'จากแอดมิน · ตัวอย่าง',account:'admin'}] },
+  { shot:'shot2', t0:15, t1:21.6,
+    camera:[[15,null],[16,null],[17.1,F2,1.9],[21.6,F2,1.9]],
+    cursor:[[16.6,.6,.7],[17.4,...at(H2.invite,.15)],[19.4,...at(H2.invite,.15)],[20.1,...at(H2.connect)],[22.1,...at(H2.connect)]],
+    clicks:[17.6,20.4],
+    hl:[[17.1,19.5,H2.invite],[19.6,21.4,H2.connect]],
+    typing:[{t0:17.9,t1:19.3,r:H2.invite,text:SAMPLE.invitation,tag:'ข้อมูลตัวอย่าง'}] },
+  { shot:'shot3', t0:21.6, t1:29,
+    camera:[[21.6,null],[22.2,null],[23.2,F3,2.2],[28.3,F3,2.2],[29,null]],
+    cursor:[[23.0,.62,.72],[23.6,...at(H3.user,.2)],[24.9,...at(H3.user,.2)],[25.3,...at(H3.pass,.2)],[26.7,...at(H3.pass,.2)],[27.2,...at(H3.signin)],[29.5,...at(H3.signin)]],
+    clicks:[23.75,25.45,27.5],
+    hl:[[23.4,25.0,H3.user,'admin'],[25.1,26.8,H3.pass,'admin'],[26.95,28.6,H3.signin]],
+    typing:[{t0:23.9,t1:24.8,r:H3.user,text:SAMPLE.adminUsername,tag:'จากแอดมิน · ตัวอย่าง',account:'admin'},{t0:25.6,t1:26.5,r:H3.pass,mask:true,tag:'จากแอดมิน · ตัวอย่าง',account:'admin'}] },
+  { shot:'shot4', t0:29, t1:38,
+    camera:[[29,null],[30,null],[31.4,H4.connected,1.9],[38,H4.connected,1.9]],
+    hl:[[31.2,37.9,H4.connected,'green']],
+    badges:[{t0:31.9,r:H4.connected}] },
+  { shot:'shot5', t0:38, t1:55,
+    camera:[[38,null],[42.4,null],[43.6,F5,1.7],[53.9,F5,1.7],[55,null]],
+    cursor:[[38.6,.62,.82],[39.7,...at(H5.menu,.35)],[42.6,...at(H5.menu,.35)],[43.9,...at(H5.vpnName,.9)],[46.6,...at(H5.vpnName,.9)],[47.1,...at(H5.user,.2)],[48.9,...at(H5.user,.2)],[49.3,...at(H5.pass,.2)],[51.0,...at(H5.pass,.2)],[51.6,...at(H5.connect)],[55.5,...at(H5.connect)]],
+    clicks:[40.0,47.3,49.5,52.1],
+    hl:[[39.5,42.4,H5.menu],[43.8,46.7,H5.vpnName],[46.85,48.95,H5.user,'hris'],[49.05,51.15,H5.pass,'hris'],[51.3,53.9,H5.connect]],
+    typing:[{t0:47.5,t1:48.6,r:H5.user,text:SAMPLE.hrisUsername,tag:'บัญชี HRIS · ตัวอย่าง',account:'hris'},{t0:49.7,t1:50.8,r:H5.pass,mask:true,tag:'บัญชี HRIS · ตัวอย่าง',account:'hris'}] },
+  { shot:'token', t0:63.8, t1:71.6,
+    camera:[[63.8,null],[64.8,null],[66.0,HT.dialog,1.6],[71.6,HT.dialog,1.6]],
+    cursor:[[65.0,.85,.55],[66.5,...at(HT.approve)],[72,...at(HT.approve)]],
+    clicks:[67.3],
+    hl:[[65.6,66.95,HT.dialog],[66.95,69.4,HT.approve,'green']],
+    badges:[{t0:67.6,r:HT.dialog}] },
+  { shot:'shot6', t0:72, t1:81,
+    camera:[[72,null],[73,null],[74.4,H6.status,1.7],[81,H6.status,1.7]],
+    hl:[[74.2,80.7,H6.status,'green']],
+    badges:[{t0:74.9,r:H6.status,burst:true}] },
+];
+
+const CHIPS = [
+  { t0:4,  t1:38,   text:'PART 1 · การตั้งค่า FortiClient ครั้งแรก' },
+  { t0:38, t1:81.3, text:'PART 2 · การเชื่อมต่อ VPN' },
+];
+const TAGS = [
+  { t0:15.2, t1:28.8, text:'ทางเลือก · ทำเฉพาะเมื่อไม่เห็นหน้า Sign in', cls:'alt' },
+  { t0:29.3, t1:37.8, text:'สถานะ: ตั้งค่าโปรแกรม', cls:'okc' },
+  { t0:55.4, t1:63.6, text:'วิธีที่ 1 · กรอกรหัส 6 หลัก', cls:'m' },
+  { t0:55.4, t1:63.6, text:'ภาพประกอบ · ไม่ใช่หน้าจอโปรแกรมจริง', cls:'note' },
+  { t0:63.9, t1:71.8, text:'วิธีที่ 2 · กด Approve', cls:'m' },
+  { t0:72.6, t1:80.8, text:'สถานะ: การเชื่อมต่อ VPN', cls:'okc' },
+  { t0:72.6, t1:80.8, text:'ภาพอ้างอิงจากคู่มือ', cls:'note' },
+];
+const TITLES = [
+  { t0:4.4,  t1:14.8, text:'กรอก Username / Password <span class="account-source admin">ที่ได้รับจากแอดมิน</span>', sub:'บัญชีสำหรับตั้งค่า FortiClient · จากนั้นกด Sign in' },
+  { t0:15.2, t1:21.8, text:'หากไม่ขึ้นหน้า Sign in ให้ใส่ Invitation Code แล้วกด Connect' },
+  { t0:21.8, t1:28.8, text:'กรอก Username / Password <span class="account-source admin">ที่ได้รับจากแอดมิน</span>', sub:'บัญชีสำหรับตั้งค่า FortiClient · จากนั้นกด Sign in' },
+  { t0:29.3, t1:37.8, text:'FortiClient Connected <span class="ok">✓</span>', sub:'ตั้งค่าโปรแกรมสำเร็จ (ยังไม่ใช่การเชื่อมต่อ VPN)', s0:32.2 },
+  { t0:38.4, t1:42.6, text:'เลือก Remote Access' },
+  { t0:42.8, t1:46.7, text:'VPN Name: THP_VPN', sub:'ตรวจสอบชื่อ VPN ให้ถูกต้อง', s0:43.6 },
+  { t0:46.9, t1:54.8, text:'กรอก Username / Password <span class="account-source hris">เดียวกับระบบ HRIS</span>', sub:'บัญชีสำหรับเชื่อมต่อ VPN · จากนั้นกด Connect' },
+  { t0:55.4, t1:68.6, text:'ยืนยันตัวตนด้วย FortiToken', sub:'กรอกรหัส 6 หลัก <b>หรือ</b> กด Approve', s0:56.2 },
+  { t0:68.8, t1:71.8, text:'เลือกทำเพียงวิธีใดวิธีหนึ่ง', sub:'กรอกรหัส 6 หลัก <b>หรือ</b> กด Approve' },
+  { t0:72.6, t1:80.8, text:'VPN Connected <span class="ok">✓</span>', sub:'เชื่อมต่อ VPN สำเร็จ พร้อมใช้งาน', s0:75.3 },
+];
+const SUBS = [
+  { t0:0.4,  t1:3.9,  text:'มาดูวิธีตั้งค่าและเชื่อมต่อ FortiClient VPN บน Windows แบบง่าย ๆ กันครับ' },
+  { t0:4.3,  t1:11.6, text:'หลังติดตั้ง FortiClient ให้กรอก Username และ Password ที่ได้รับจากแอดมิน' },
+  { t0:11.6, t1:14.8, text:'จากนั้นกด Sign in' },
+  { t0:15.3, t1:20.0, text:'หากหน้าต่าง Sign in ไม่ปรากฏ ให้เปิด FortiClient แล้วกรอก Invitation Code ที่ได้รับจากแอดมิน' },
+  { t0:20.0, t1:22.0, text:'กด Connect' },
+  { t0:22.0, t1:28.8, text:'จากนั้นกรอก Username และ Password ที่ได้รับจากแอดมิน แล้วกด Sign in' },
+  { t0:29.3, t1:36.5, text:'เมื่อตั้งค่าสำเร็จ สถานะในหน้า Zero Trust Telemetry จะแสดง Connected' },
+  { t0:38.3, t1:42.5, text:'เมื่อต้องการเชื่อมต่อ VPN ให้เลือก Remote Access' },
+  { t0:42.5, t1:46.7, text:'ตรวจสอบ VPN Name เป็น THP_VPN', say:'ตรวจสอบ VPN Name เป็น T H P VPN' },
+  { t0:46.7, t1:51.3, text:'จากนั้นกรอก Username และ Password เดียวกับระบบ HRIS', say:'จากนั้นกรอก Username และ Password เดียวกับระบบ H R I S' },
+  { t0:51.3, t1:54.7, text:'แล้วกด Connect' },
+  { t0:55.3, t1:58.4, text:'จากนั้นยืนยันตัวตนผ่าน FortiToken' },
+  { t0:58.4, t1:63.5, text:'โดยกรอกรหัส 6 หลักจากแอป' },
+  { t0:63.5, t1:68.8, text:'หรือกด Approve จากการแจ้งเตือนบนมือถือ' },
+  { t0:68.8, t1:71.8, text:'เลือกทำเพียงวิธีใดวิธีหนึ่ง' },
+  { t0:72.4, t1:75.6, text:'เมื่อสถานะแสดง VPN Connected' },
+  { t0:75.6, t1:80.7, text:'หมายความว่าเชื่อมต่อ VPN สำเร็จ และพร้อมใช้งานแล้ว' },
+  { t0:81.4, t1:85.3, text:'เพียงเท่านี้ ก็สามารถใช้งาน FortiClient VPN ได้แล้วครับ' },
+  { t0:85.5, t1:91.5, text:'ติดต่อสอบถามผ่าน LINE Official ID: @961ugpvt', say:'ติดต่อสอบถามผ่านไลน์ ออฟฟิเชียล ตามไอดีที่แสดงบนหน้าจอได้ครับ' },
+];
+
+/* ============ สร้างฉาก ============ */
+const CURSOR_SVG = '<svg viewBox="0 0 24 24" width="44" height="44"><path d="M3 2 L3 19 L7.5 15 L10.5 21.5 L13.3 20.3 L10.4 13.9 L16.5 13.9 Z" fill="#fff" stroke="#111" stroke-width="1.4" stroke-linejoin="round"/></svg>';
+const CHECK_SVG  = '<svg viewBox="0 0 24 24" width="46" height="46" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>';
+const MAXW=1500, MAXH=740, TOP=200;
+
+function fitFrame(s,w,h){
+  const k=Math.min(MAXW/w, MAXH/h); s.W=Math.round(w*k); s.H=Math.round(h*k);
+  Object.assign(s.el.style,{ width:s.W+'px', height:s.H+'px', left:(1920-s.W)/2+'px', top:(TOP+(MAXH-s.H)/2)+'px' });
+  s.camEl.style.width=s.W+'px'; s.camEl.style.height=s.H+'px';
+  s.privEls.forEach(d=>layoutPriv(d,s));
+}
+
+const shotsEl=$('shots');
+SEGMENTS.forEach(s=>{
+  s.camK=s.camera.map(([t,r,mz])=>({t,...focus(r,mz)}));
+  s.el=mk('frame',shotsEl);
+  s.camEl=mk('cam',s.el);
+  const img=document.createElement('img'); img.alt=''; s.camEl.appendChild(img);
+  s.privEls=makePriv(s.camEl,s.shot);
+  s.typeEls=(s.typing||[]).map(ty=>{
+    ty.full=ty.mask ? '●'.repeat(SAMPLE.pwLen) : ty.text;
+    const d=mk('typed',s.camEl,'<span></span><i class="caret"></i>');
+    d.txt=d.firstChild; d.caret=d.lastChild;
+    if(ty.tag){ d.tag=mk('tag '+(ty.account||''),s.camEl); d.tag.textContent=ty.tag; }
+    return d;
+  });
+  s.hlEls=(s.hl||[]).map(h=>mk('hl'+(h[3]==='green'?' green':''),s.camEl));
+  s.badgeEls=(s.badges||[]).map(b=>{
+    const d=mk('badge',s.camEl,`<div class="ring"></div><div class="disc">${CHECK_SVG}</div>`);
+    d.ring=d.firstChild; d.dots=[];
+    if(b.burst) for(let i=0;i<12;i++) d.dots.push(mk('dot',d));
+    return d;
+  });
+  s.ripEls=(s.clicks||[]).map(()=>mk('ripple',s.camEl));
+  if(s.cursor) s.curEl=mk('cursor',s.camEl,CURSOR_SVG);
+  img.onload=()=>fitFrame(s,img.naturalWidth,img.naturalHeight);
+  fitFrame(s,16,10);
+  img.src=IMAGES[s.shot];
+});
+
+(function(){
+  const box=$('introPic'), cam=mk('cam',box), img=document.createElement('img');
+  img.alt=''; cam.appendChild(img);
+  const pv=makePriv(cam,INTRO_SHOT);
+  img.onload=()=>{
+    const AW=768, AH=404, k=Math.min(AW/img.naturalWidth, AH/img.naturalHeight);
+    const s={ W:Math.round(img.naturalWidth*k), H:Math.round(img.naturalHeight*k) };
+    Object.assign(cam.style,{ width:s.W+'px', height:s.H+'px', left:(AW-s.W)/2+'px', top:(AH-s.H)/2+'px' });
+    pv.forEach(d=>layoutPriv(d,s));
+  };
+  img.onerror=()=>{ box.style.display='none'; };
+  img.src=IMAGES[INTRO_SHOT];
+})();
+
+const chipRow=$('chipRow');
+const tagEls=TAGS.map(g=>{ const d=mk('chip '+g.cls,chipRow); d.textContent=g.text; d.style.display='none'; return d; });
+
+/* ============ Render ============ */
+function camAt(K,t){
+  if(t<=K[0].t) return K[0];
+  for(let i=1;i<K.length;i++){
+    if(t<=K[i].t){ const a=K[i-1], b=K[i], p=ease((t-a.t)/(b.t-a.t));
+      return { cx:a.cx+(b.cx-a.cx)*p, cy:a.cy+(b.cy-a.cy)*p, z:a.z+(b.z-a.z)*p }; }
+  }
+  return K[K.length-1];
+}
+function posAt(K,t){
+  if(t<=K[0][0]) return [K[0][1],K[0][2]];
+  for(let i=1;i<K.length;i++){
+    if(t<=K[i][0]){ const a=K[i-1], b=K[i], p=ease((t-a[0])/(b[0]-a[0]));
+      return [a[1]+(b[1]-a[1])*p, a[2]+(b[2]-a[2])*p]; }
+  }
+  const l=K[K.length-1]; return [l[1],l[2]];
+}
+
+function renderSeg(s,t){
+  const op=ramp(t,s.t0,s.t0+.5)*(1-ramp(t,s.t1,s.t1+.5));
+  s.el.style.opacity=op; s.el.style.visibility=op>0.001?'visible':'hidden';
+  if(op<=0.001) return;
+  const c=camAt(s.camK,t), z=c.z;
+  const cx=clamp(c.cx,1/(2*z),1-1/(2*z)), cy=clamp(c.cy,1/(2*z),1-1/(2*z));
+  s.camEl.style.transform=`translate(${s.W/2-z*cx*s.W}px,${s.H/2-z*cy*s.H}px) scale(${z})`;
+
+  (s.hl||[]).forEach((h,i)=>{
+    const el=s.hlEls[i], a=win(t,h[0],h[1],.3); el.style.opacity=a; if(a<=0) return;
+    const pulse=(1+Math.sin((t-h[0])*6))/2;
+    place(el,h[2],s,(8+3*pulse)/z);
+    el.style.borderWidth=(4/z)+'px';
+    const col=h[3]==='green'?'31,170,89':h[3]==='admin'?'184,117,0':h[3]==='hris'?'0,133,139':'30,136,229';
+    el.style.borderColor=`rgb(${col})`;
+    el.style.boxShadow=`0 0 0 4000px rgba(8,24,48,.38), 0 0 ${18/z}px rgba(${col},.9)`;
+  });
+
+  (s.typing||[]).forEach((ty,i)=>{
+    const el=s.typeEls[i];
+    if(t<ty.t0){ el.style.display='none'; if(el.tag) el.tag.style.display='none'; return; }
+    el.style.display='flex';
+    const fh=ty.r[3]*s.H, inset=fh*.14;
+    place(el,ty.r,s,-inset);
+    el.style.fontSize=(fh*(ty.mask?.4:.46))+'px';
+    el.style.letterSpacing=ty.mask?'.12em':'0';
+    const n=Math.round(ty.full.length*ramp(t,ty.t0,ty.t1));
+    el.txt.textContent=ty.full.slice(0,n);
+    el.caret.style.opacity=(t<ty.t1+.5 && Math.floor(t*2.5)%2===0)?1:0;
+    if(el.tag){
+      el.tag.style.display='block';
+      el.tag.style.fontSize=(fh*.34)+'px';
+      el.tag.style.left=(ty.r[0]*s.W)+'px';
+      el.tag.style.top=(ty.r[1]*s.H-fh*.62)+'px';
+    }
+  });
+
+  if(s.cursor){
+    const K=s.cursor, p=posAt(K,t);
+    let press=1; (s.clicks||[]).forEach(ct=>{ const d=t-ct; if(d>=-.05 && d<.18) press=.82; });
+    s.curEl.style.opacity=ramp(t,K[0][0],K[0][0]+.3);
+    s.curEl.style.transform=`translate(${p[0]*s.W}px,${p[1]*s.H}px) scale(${press/z})`;
+    s.clicks.forEach((ct,i)=>{
+      const el=s.ripEls[i], d=(t-ct)/.6;
+      if(d<0||d>1){ el.style.opacity=0; return; }
+      const q=posAt(K,ct);
+      el.style.opacity=1-d;
+      el.style.transform=`translate(${q[0]*s.W}px,${q[1]*s.H}px) scale(${(.3+1.1*d)/z})`;
+    });
+  }
+
+  (s.badges||[]).forEach((b,i)=>{
+    const el=s.badgeEls[i], d=t-b.t0;
+    if(d<0){ el.style.opacity=0; return; }
+    const k=easeOutBack(clamp(d/.45));
+    el.style.opacity=clamp(d/.15);
+    const x=(b.r[0]+b.r[2])*s.W+16/z, y=(b.r[1]+b.r[3]/2)*s.H;
+    el.style.transform=`translate(${x}px,${y}px) scale(${k/z}) translate(0,-50%)`;
+    const q=clamp(d/.8);
+    el.ring.style.opacity=1-q; el.ring.style.transform=`scale(${1+1.4*q})`;
+    el.dots.forEach((dot,j)=>{
+      const ang=j/12*Math.PI*2, qq=clamp(d/.9), dist=40+70*(1-Math.pow(1-qq,3));
+      dot.style.opacity=1-qq;
+      dot.style.transform=`translate(${Math.cos(ang)*dist}px,${Math.sin(ang)*dist}px) scale(${1-qq*.6})`;
+    });
+  });
+}
+
+function renderIntro(t){
+  const el=$('intro'), op=1-ramp(t,3.6,4.2);
+  el.style.opacity=op; el.style.visibility=op>0?'visible':'hidden'; if(op<=0) return;
+  const m=ease(ramp(t,.2,1.3)), mon=$('monitor');
+  mon.style.opacity=m; mon.style.transform=`translateY(${(1-m)*40}px) scale(${.96+.04*m+.01*ramp(t,1.3,4)})`;
+  const a=ease(ramp(t,.6,1.6)), tx=$('introText');
+  tx.style.opacity=a; tx.style.transform=`translateX(${(1-a)*-40}px)`;
+}
+
+const tk={ el:$('token'), pc:$('tkPc'), m1:$('m1'), phone:$('tkPhone'), dig:$('tkDigits'), ok:$('tkOk'),
+  code:$('tkCode'), bar:$('tkBar'), arrow:$('tkArrow') };
+for(let i=0;i<6;i++) mk('',tk.dig);
+
+function renderToken(t){
+  const op=ramp(t,55,55.6)*(1-ramp(t,63.5,64));
+  tk.el.style.opacity=op; tk.el.style.visibility=op>0?'visible':'hidden'; if(op<=0) return;
+  const a0=ease(ramp(t,55.2,56)), a1=ease(ramp(t,55.6,56.4)), f=win(t,57,63.6,.4);
+  tk.pc.style.opacity=a0; tk.pc.style.transform=`translateY(${(1-a0)*30}px)`;
+  tk.m1.style.opacity=a1; tk.m1.style.transform=`translateY(${(1-a1)*40}px) scale(${1+.03*f})`;
+  tk.phone.classList.toggle('on',f>.5);
+  tk.code.style.opacity=ramp(t,56.9,57.4);
+  tk.bar.style.width=(100-((t-55)%30)/30*100)+'%';
+  const ar=ease(ramp(t,58.4,59)); tk.arrow.style.opacity=ar; tk.arrow.style.transform=`translateX(${(1-ar)*20}px)`;
+  [...tk.dig.children].forEach((d,i)=>{ const on=t>=59.2+i*.35; d.textContent=on?SAMPLE.otp[i]:''; d.classList.toggle('f',on); });
+  tk.ok.style.opacity=ramp(t,61.6,62);
+}
+
+function renderOutro(t){
+  const el=$('outro'), op=ramp(t,81,81.6);
+  el.style.opacity=op; el.style.visibility=op>0?'visible':'hidden'; if(op<=0) return;
+  const sh=$('shield'), k=easeOutBack(ramp(t,81.3,82));
+  sh.style.opacity=ramp(t,81.3,81.5); sh.style.transform=`scale(${k})`;
+  $('oCheck').style.strokeDashoffset=1-ease(ramp(t,81.9,82.5));
+  [['o0',82.1],['o1',82.5],['o2',82.9]].forEach(([c,s])=>{
+    const e=el.querySelector('.'+c), a=ease(ramp(t,s,s+.5));
+    e.style.opacity=a; e.style.transform=`translateY(${(1-a)*20}px)`;
+  });
+}
+
+let curTitle=-2, curChip=-2, curSub=-2;
+function renderTop(t){
+  $('top').style.opacity=ramp(t,4,4.5)*(1-ramp(t,80.9,81.3));
+  const ci=CHIPS.findIndex(c=>t>=c.t0&&t<c.t1), chip=$('chip');
+  if(ci!==curChip){ curChip=ci; if(ci>=0) chip.textContent=CHIPS[ci].text; }
+  chip.style.opacity=ci>=0 ? win(t,CHIPS[ci].t0,CHIPS[ci].t1,.3) : 0;
+  TAGS.forEach((g,i)=>{ const a=win(t,g.t0,g.t1,.3); tagEls[i].style.display=a>0?'':'none'; tagEls[i].style.opacity=a; });
+  const ti=TITLES.findIndex(x=>t>=x.t0&&t<x.t1), t1=$('title1'), t2=$('title2');
+  if(ti!==curTitle){ curTitle=ti; t1.innerHTML=ti>=0?TITLES[ti].text:''; t2.innerHTML=ti>=0?(TITLES[ti].sub||''):''; }
+  if(ti<0){ t1.style.opacity=0; t2.style.opacity=0; return; }
+  const T=TITLES[ti], a=win(t,T.t0,T.t1,.35);
+  t1.style.opacity=a; t1.style.transform=`translateY(${(1-a)*12}px)`;
+  const s0=T.s0??T.t0; t2.style.opacity=a*ramp(t,s0,s0+.4);
+}
+
+function renderSubs(t){
+  const si=started ? SUBS.findIndex(x=>t>=x.t0&&t<x.t1) : -1, box=$('subs');
+  if(si!==curSub){ curSub=si; box.firstChild.textContent=si>=0?SUBS[si].text:''; }
+  box.style.opacity=si>=0 ? win(t,SUBS[si].t0,SUBS[si].t1,.12) : 0;
+}
+
+/* ============ เสียงพากย์ + ดนตรี ============ */
+let thVoice=null;
+function loadVoices(){
+  if(!('speechSynthesis' in window)) return;
+  const vs=speechSynthesis.getVoices().filter(v=>/^th/i.test(v.lang));
+  thVoice=vs.find(v=>/Premwadee|Niwat|Natural|Online/i.test(v.name)) || vs[0] || null;
+}
+if('speechSynthesis' in window){ speechSynthesis.onvoiceschanged=loadVoices; loadVoices(); }
+function speak(text){
+  if(!('speechSynthesis' in window)) return;
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='th-TH'; if(thVoice) u.voice=thVoice; u.rate=VOICE_RATE;
+  speechSynthesis.speak(u);
+}
+function stopSpeech(){ if('speechSynthesis' in window) speechSynthesis.cancel(); }
+
+const Music={ ctx:null, timer:null, next:0, step:0,
+  init(){
+    const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+    const c=this.ctx=new AC();
+    this.out=c.createGain(); this.out.gain.value=0;
+    const lp=c.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value=2400;
+    this.out.connect(lp); lp.connect(c.destination);
+    this.dry=c.createGain(); this.dry.connect(this.out);
+    const dl=c.createDelay(1); dl.delayTime.value=.375;
+    const fb=c.createGain(); fb.gain.value=.32; const wet=c.createGain(); wet.gain.value=.35;
+    this.send=c.createGain(); this.send.connect(dl); dl.connect(fb); fb.connect(dl); dl.connect(wet); wet.connect(this.out);
+  },
+  start(){
+    if(!this.ctx) this.init(); if(!this.ctx) return;
+    this.ctx.resume();
+    if(!this.timer){ this.next=this.ctx.currentTime+.08; this.timer=setInterval(()=>this.sched(),60); }
+  },
+  pause(){ if(this.timer){ clearInterval(this.timer); this.timer=null; } if(this.ctx) this.ctx.suspend(); },
+  level(v){ if(this.ctx) this.out.gain.setTargetAtTime(v,this.ctx.currentTime,.25); },
+  note(m,t,dur,peak,type,dest,att=.01){
+    const c=this.ctx, o=c.createOscillator(), g=c.createGain();
+    o.type=type; o.frequency.value=440*Math.pow(2,(m-69)/12);
+    g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(peak,t+att); g.gain.exponentialRampToValueAtTime(.0001,t+dur);
+    o.connect(g); g.connect(dest); o.start(t); o.stop(t+dur+.05);
+  },
+  sched(){
+    const c=this.ctx, ST=60/100/2;
+    const CH=[[48,55,59,64],[45,52,55,60],[41,48,52,57],[43,50,55,59]];
+    const pat=[0,2,1,3,2,1,3,2];
+    while(this.next<c.currentTime+.35){
+      const s=this.step, ch=CH[Math.floor(s/16)%4], t=this.next;
+      if(s%16===0){
+        ch.forEach(m=>{ this.note(m,t,16*ST+1.2,.035,'sine',this.dry,1.2); this.note(m+12,t,16*ST+1,.012,'triangle',this.dry,1.5); });
+        this.note(ch[0]-12,t,16*ST,.05,'sine',this.dry,.4);
+      }
+      if(s%2===0 || Math.random()<.3){
+        const m=ch[pat[s%8]]+24;
+        this.note(m,t,.7,.022,'sine',this.dry); this.note(m,t,.7,.012,'sine',this.send);
+      }
+      this.next+=ST; this.step++;
+    }
+  }
+};
+let lastLevel=-1;
+function updateMusic(t){
+  const speaking='speechSynthesis' in window && speechSynthesis.speaking;
+  const v=MUSIC_VOLUME*(speaking?.5:1)*(1-ramp(t,90,DURATION));
+  if(Math.abs(v-lastLevel)>.01){ Music.level(v); lastLevel=v; }
+}
+
+/* ============ เล่น / หยุด ============ */
+const stage=$('stage'), btn=$('btn'), body=document.body;
+const PLAY_SVG ='<svg viewBox="0 0 24 24"><path d="M6 3.5v17L20 12z" fill="#0b2e59"/></svg>';
+const PAUSE_SVG='<svg viewBox="0 0 24 24"><rect x="5" y="3.5" width="5" height="17" rx="1" fill="#0b2e59"/><rect x="14" y="3.5" width="5" height="17" rx="1" fill="#0b2e59"/></svg>';
+let t=POSTER_T, playing=false, started=false, ended=false, last=0;
+
+function fit(){
+  const availableHeight=Math.max(1,innerHeight-84);
+  const k=Math.min(innerWidth/1920, availableHeight/1080);
+  stage.style.top=availableHeight/2+'px';
+  stage.style.transform=`translate(-50%,-50%) scale(${k})`;
+  $('subs').firstChild.style.fontSize=Math.max(36, 14/k)+'px';   // ซับอ่านได้แม้จอเล็ก
+  $('outro').querySelector('.o2').style.fontSize=Math.max(28,12/k)+'px';
+  const contact=$('outro').querySelector('a');
+  contact.style.fontSize=Math.max(42,18/k)+'px';
+  contact.style.minHeight=44/k+'px';
+  contact.style.display='flex'; contact.style.alignItems='center'; contact.style.justifyContent='center';
+}
+addEventListener('resize',fit); fit();
+
+function setUI(){
+  btn.innerHTML=playing?PAUSE_SVG:PLAY_SVG;
+  btn.setAttribute('aria-label',playing?'หยุด':'เล่น');
+  body.classList.toggle('playing',playing);
+  body.classList.toggle('started',started);
+  $('bigLbl').textContent = 'ดูคู่มือ (1:32 นาที)';
+  btn.setAttribute('aria-label',ended?'เล่นอีกครั้ง':playing?'หยุดชั่วคราว':'เล่น');
+}
+function play(){
+  if(!started || ended){ started=true; ended=false; t=0; loadVoices(); }
+  playing=true; last=performance.now(); Music.start(); setUI(); poke();
+}
+function pause(){ if(!playing) return; playing=false; stopSpeech(); Music.pause(); setUI(); }
+function toggle(){ playing?pause():play(); }
+function finish(){ playing=false; started=true; ended=true; t=DURATION; stopSpeech(); Music.pause(); setUI(); }
+
+const seek=$('seek');
+seek.max=DURATION;
+let resumeAfterScrub=false, scrubbing=false, pointerInteraction=false;
+function formatTime(seconds){
+  const n=Math.floor(seconds); return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');
+}
+function updateProgress(){
+  const current=started?t:0;
+  seek.value=current;
+  seek.setAttribute('aria-valuetext',formatTime(current)+' จาก '+formatTime(DURATION));
+  $('time').textContent=formatTime(current)+' / '+formatTime(DURATION);
+}
+function narrateCurrent(){
+  const current=SUBS.find(x=>t>=x.t0&&t<x.t1);
+  if(current && playing) speak(current.say||current.text);
+}
+function seekTo(value,narrate=true){
+  stopSpeech(); started=true; ended=false;
+  t=clamp(Number(value),0,DURATION); last=performance.now();
+  if(t>=DURATION) finish();
+  else { setUI(); if(narrate) narrateCurrent(); }
+  render();
+}
+
+function render(){
+  $('fade').style.opacity=started ? 1-ramp(t,0,.7) : 0;
+  renderIntro(t); SEGMENTS.forEach(s=>renderSeg(s,t)); renderToken(t); renderTop(t); renderOutro(t); renderSubs(t);
+  updateMusic(t);
+  updateProgress();
+}
+function tick(now){
+  if(playing){
+    const prev=t; t=Math.min(DURATION, t+Math.min(now-last,250)/1000); last=now;
+    SUBS.forEach(x=>{ if(x.t0>prev && x.t0<=t) speak(x.say||x.text); });
+    if(t>=DURATION) finish();
+  }
+  render(); requestAnimationFrame(tick);
+}
+
+btn.addEventListener('click',e=>{ e.stopPropagation(); toggle(); });
+$('big').addEventListener('click',toggle);
+stage.addEventListener('click',e=>{ if(!e.target.closest('a,button,input')) toggle(); });
+$('back').addEventListener('click',()=>seekTo((started?t:0)-5));
+$('forward').addEventListener('click',()=>seekTo((started?t:0)+5));
+seek.addEventListener('pointerdown',()=>{
+  scrubbing=true; pointerInteraction=true; resumeAfterScrub=playing; pause();
+});
+seek.addEventListener('input',()=>seekTo(seek.value,false));
+function endScrub(){
+  if(!scrubbing) return;
+  scrubbing=false;
+  if(resumeAfterScrub && !ended) play();
+  resumeAfterScrub=false; narrateCurrent();
+  setTimeout(()=>{ pointerInteraction=false; },0);
+}
+addEventListener('pointerup',endScrub);
+addEventListener('pointercancel',endScrub);
+seek.addEventListener('change',()=>{
+  if(!pointerInteraction){ stopSpeech(); narrateCurrent(); }
+});
+addEventListener('keydown',e=>{
+  if(e.target.closest('input,button,a') || e.altKey || e.ctrlKey || e.metaKey) return;
+  if(e.code==='Space'){ e.preventDefault(); toggle(); }
+  if(e.code==='ArrowLeft' || e.code==='ArrowRight'){
+    e.preventDefault(); seekTo((started?t:0)+(e.code==='ArrowLeft'?-5:5));
+  }
+});
+
+let idleT;
+function poke(){ body.classList.remove('idle'); clearTimeout(idleT); idleT=setTimeout(()=>body.classList.add('idle'),2200); }
+addEventListener('mousemove',poke);
+addEventListener('touchstart',poke,{passive:true});
+
+// หยุดอัตโนมัติเมื่อสลับแท็บ หรือเลื่อนหน้าจนวิดีโอพ้นจอ
+document.addEventListener('visibilitychange',()=>{ if(document.hidden) pause(); });
+if('IntersectionObserver' in window){
+  new IntersectionObserver(es=>{ if(!es[0].isIntersecting) pause(); },{threshold:.25}).observe(document.documentElement);
+}
+
+setUI();
+requestAnimationFrame(tick);
+</script>
+</body>
+</html>
