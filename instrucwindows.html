@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ตั้งค่า FortiClient บน Windows | THP VPN</title>
-  <meta name="description" content="ขั้นตอนหลังติดตั้ง FortiClient บน Windows การใส่ Invitation Code และตรวจสอบสถานะ Connected">
+  <title>ตั้งค่าครั้งแรกบน Windows | THP VPN</title>
+  <meta name="description" content="ขั้นตอนติดตั้งและตั้งค่า FortiClient ครั้งแรกบน Windows การใส่ Invitation Code และตรวจสอบสถานะ Connected">
   <link rel="icon" href="images/apple-touch-icon.png" type="image/png">
   <link rel="stylesheet" href="css/site.css">
   <script src="js/index.js" defer></script>
@@ -28,10 +28,16 @@
     </div>
   </header>
 <main id="main-content" tabindex="-1">
-  <div class="page-heading"><div class="container reading-width"><a class="breadcrumb" href="index.html#start">กลับไปขั้นตอนเริ่มใช้งาน</a><h1>ตั้งค่า FortiClient บน Windows</h1><p>เตรียม Username / Password และ Invitation Code</p></div></div>
-  <section class="section container reading-width" aria-label="ขั้นตอนหลังติดตั้ง">
-    <p class="note"><strong>ก่อนเริ่ม:</strong> Username / Password ชุดนี้ใช้สำหรับติดตั้งครั้งแรก</p>
+  <div class="page-heading"><div class="container reading-width"><a class="breadcrumb" href="guides.html">← กลับไปคู่มือ</a><h1>ตั้งค่าครั้งแรกบน Windows</h1><p>ทำครั้งเดียว · เตรียม Username / Password และ Invitation Code</p></div></div>
+  <section class="section container reading-width" aria-label="ตั้งค่าครั้งแรกบน Windows">
+    <p class="note"><strong>ก่อนเริ่ม:</strong> Username / Password ชุดนี้ใช้สำหรับติดตั้งครั้งแรก · ยังไม่มีโปรแกรม? <a href="index.html#alt-downloads">ดาวน์โหลด FortiClient</a></p>
     <ol class="instruction-list">
+      <li><h2>ติดตั้ง FortiClient</h2><p>เปิดไฟล์ที่ดาวน์โหลดแล้วทำตามขั้นตอนติดตั้ง หากขึ้นหน้าต่าง <strong>Windows protected your PC</strong> ให้กด <strong>More info</strong> แล้วกด <strong>Run anyway</strong></p>
+        <div class="guide-image-pair">
+          <figure class="figure"><a class="image-link" href="images/moreinfo.jpg" data-lightbox aria-label="ขยายภาพ: กด More info ในหน้าต่าง Windows protected your PC"><img src="images/moreinfo.jpg" alt="หน้าต่าง Windows protected your PC พร้อมลิงก์ More info" loading="lazy"></a><figcaption>กด More info</figcaption></figure>
+          <figure class="figure"><a class="image-link" href="images/runanyway.jpg" data-lightbox aria-label="ขยายภาพ: กด Run anyway เพื่อติดตั้ง FortiClientSetup.exe"><img src="images/runanyway.jpg" alt="หน้าต่าง Windows protected your PC แสดงไฟล์ FortiClientSetup.exe และปุ่ม Run anyway" loading="lazy"></a><figcaption>ตรวจว่าเป็นไฟล์ FortiClientSetup.exe แล้วกด Run anyway</figcaption></figure>
+        </div>
+      </li>
       <li><h2>เปิด FortiClient และลงชื่อเข้าใช้</h2><p>เมื่อ FortiClient เปิด ให้กรอก <strong>Username</strong> และ <strong>Password</strong> ที่ได้รับ แล้วกด <strong>Sign in</strong></p>
       <figure class="figure"><a class="image-link" href="images/3.1.png" data-lightbox aria-label="ขยายภาพ: หน้าลงชื่อเข้าใช้ FortiClient หลังติดตั้ง"><img src="images/3.1.png" alt="หน้าลงชื่อเข้าใช้ FortiClient หลังติดตั้ง" loading="lazy"></a><figcaption>หน้าลงชื่อเข้าใช้ FortiClient หลังติดตั้ง · เลือกภาพเพื่อขยาย</figcaption></figure></li>
       <li><h2>ถ้า FortiClient ไม่เปิดอัตโนมัติ</h2><p>ดับเบิลคลิกไอคอน FortiClient มุมขวาล่าง แล้วใส่ <strong>Invitation Code</strong> ในช่อง <strong>Enter Server address or Invitation Code</strong> แล้วกด <strong>Connect</strong> แล้ว Sign in</p>
@@ -40,13 +46,13 @@
       <figure class="figure"><a class="image-link" href="images/2.PNG" data-lightbox aria-label="ขยายภาพ: ตัวอย่างสถานะ Connected หลังตั้งค่าเรียบร้อย"><img src="images/2.PNG" alt="ตัวอย่างสถานะ Connected หลังตั้งค่าเรียบร้อย" loading="lazy"></a><figcaption>ตัวอย่างสถานะ Connected หลังตั้งค่าเรียบร้อย · เลือกภาพเพื่อขยาย</figcaption></figure>
       <p>จากนั้นเชื่อมต่อ VPN</p></li>
     </ol>
-    <div class="support-strip"><div><h2>ติดตั้งเสร็จแล้ว?</h2><p>เข้าใช้งาน VPN</p></div><a class="button button-primary" href="connectwindows.html">เข้าใช้งาน Windows</a></div>
-    <div class="support-strip"><a class="button button-primary" href="docs/คู่เข้าใช้งาน VPN Forticlient สำหรับ windows.pdf" target="_blank" rel="noopener noreferrer">อ่านคู่มือเชื่อมต่อ VPN (PDF)<span class="sr-only"> เปิดแท็บใหม่</span></a><a class="text-link" href="support.html">ดูวิธีแก้ปัญหา</a></div>
+    <div class="support-strip"><div><h2>ตั้งค่าเสร็จแล้ว</h2><p>ยังไม่มี FortiToken? <a href="instrucios.html#fortitoken">ตั้งค่า FortiToken บนมือถือ</a> ก่อนเชื่อมต่อ</p></div><a class="button button-primary" href="connectwindows.html">ถัดไป: เชื่อมต่อ VPN</a></div>
+    <p class="strip-links"><a href="docs/คู่เข้าใช้งาน VPN Forticlient สำหรับ windows.pdf" target="_blank" rel="noopener noreferrer">คู่มือ PDF<span class="sr-only"> (เปิดแท็บใหม่)</span></a><a href="support.html">ดูวิธีแก้ปัญหา</a></p>
   </section>
 </main>
   <footer class="contact-section" id="contact">
     <div class="container contact-inner">
-      <div><h2>ให้เราช่วยคุณ</h2><p>มีปัญหา?</p></div>
+      <div><h2>ติดต่อเจ้าหน้าที่</h2></div>
       <div class="contact-actions">
         <a class="button button-primary" href="https://lin.ee/IXZnVrP" target="_blank" rel="noopener noreferrer">ติดต่อ LINE @961ugpvt <span class="sr-only">(เปิดแท็บใหม่)</span></a>
         <p>โทร <a href="tel:028313406">0 2831 3406</a> หรือ <a href="tel:028313407">0 2831 3407</a></p>
