@@ -795,6 +795,9 @@ if('IntersectionObserver' in window){
 }
 
 setUI();
+window.playChapter=seconds=>{ seekTo(seconds,false); play(); };
+const chapterTime=new URLSearchParams(location.hash.slice(1)).get('t');
+if(chapterTime!==null && Number.isFinite(Number(chapterTime))) seekTo(Number(chapterTime),false);
 requestAnimationFrame(tick);
 </script>
 </body>
